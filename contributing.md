@@ -4,22 +4,16 @@ Make a change to the template and then pull changes
 Repo: https://github.com/CodeYourFuture/Module-Template
 -->
 
-# How To Submit Your Coursework
+# How To Submit Your Project
 
-Use Git & Github to submit your coursework as a pull request.
+## Step 1: Follow the Project Readme
 
-The Github Desktop cheatsheet will help you.
+Read the project readme carefully. It will tell you what you need to do.
 
-[Github Desktop Cheatsheet](http://syllabus.codeyourfuture.io/git/cheatsheet)
+## Step 2: Complete the Project
 
-This module will help you submit your coursework.
+Complete the project according to the requirements in the project readme.
 
-[Git](http://syllabus.codeyourfuture.io/git/index)
+## Step 3: Submit Your Project
 
-## Questions & Help
-
-Contributing to a remote codebase is a necessary skill for a professional developer. Opening PRs is mandatory at CYF. It is part of the coursework.
-
-If you cannot submit your coursework you **must** post on Slack to get unblocked.
-
-[How to get help](./HOW-TO-GET-HELP.md)
+When you have completed the project, submit it for review by opening a PR to the `main` branch of the original repo. This is so we have a simple list of everyone's projects.
