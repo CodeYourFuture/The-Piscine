@@ -28,9 +28,9 @@ Some projects will be done in groups, and others as individuals. If your project
 
 ### Structure
 
-Your project should at least list an introduction and a list of requirements. Additional sections are up to you.
+Your project description should be in a README.md file in a top-level direcetory of this repository named after your project, e.g. "Project-Song-Data" or "Project-Alarm-Clock". Any additional files needed by the project should also be in that directory.
 
-Make sure to include a rubric. The rubric will be shared with trainees as part of the project.
+Your project should at least list an introduction, a list of requirements, and a rubric. Additional sections are up to you.
 
 State whether the project is intended for an individual trainee, a group of trainees, or either.
 
@@ -101,3 +101,11 @@ In group projects, we require an equal split of features between the trainees.
 When specifying a group project, make sure four people can reasonably be working on their own feature in parallel. They only have a week to complete the project, so if one trainee can't be working until another is finished, this is bad.
 
 At assessment time, we expect every trainee to be able to talk about every line of code in their project, even the ones they didn't write. It is up to the trainees how they ensure this.
+
+### Self-contained
+
+Each project here should be self-contained; projects should not extend existing projects and assume they have been built.
+
+It's fine to rely on prerequisite knowledge as long as there is a link to resources which would explain that prerequisite at the correct level.
+
+Rule of thumb: a person should be able to complete a project _without_ being part of CYF, and without having done any of the other projects.
