@@ -4,7 +4,7 @@ A common task in software is to take some data, process it in some way, and pres
 
 We have supplied a collection of data for you to analyse. Your task is to write code which processes this data and shows useful conclusions to a user.
 
-You should make a small HTML + JavaScript frontend which displays the answers to several questions, which are listed below.
+Make a small HTML + JavaScript frontend which displays the answers to several questions, which are listed below.
 
 Some principles you should remember throughout this project:
 1. This is a project about data processing, not UI. You should make a simple frontend to show the data, but you should spend as little time as you can on the frontend. No credit will be given for making prettier or more complicated frontend. You do not need to write any CSS.
