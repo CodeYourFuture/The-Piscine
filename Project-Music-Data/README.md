@@ -1,6 +1,6 @@
 # Music data project
 
-One of the most common tasks in software is to take some data, process it in some way, and present it usefully to a user.
+A common task in software is to take some data, process it in some way, and present it usefully to someone.
 
 For this project, we have supplied a collection of data for you to analyse. Your task is to write code which processes it and shows useful conclusions to a user.
 
