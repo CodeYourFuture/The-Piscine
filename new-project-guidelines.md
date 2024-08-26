@@ -4,6 +4,8 @@ This is guidance for volunteers for how to create a new project for the piscine.
 
 You do not need to read or understand this guidance in order to take the piscine as a trainee.
 
+You can also see [how we present these goals to our candidates in the Piscine prep](https://piscine.codeyourfuture.io/prep/#goals), as well as the [expectations we set for candidates](https://piscine.codeyourfuture.io/prep/#expectations).
+
 ## Goals
 
 The goals of the piscine are:
