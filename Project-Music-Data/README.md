@@ -2,7 +2,7 @@
 
 A common task in software is to take some data, process it in some way, and present it usefully to someone.
 
-For this project, we have supplied a collection of data for you to analyse. Your task is to write code which processes it and shows useful conclusions to a user.
+We have supplied a collection of data for you to analyse. Your task is to write code which processes this data and shows useful conclusions to a user.
 
 You should make a small HTML + JavaScript frontend which displays the answers to several questions, which are listed below.
 
