@@ -7,7 +7,7 @@ We have supplied a collection of data for you to analyse. Your task is to write 
 Make a small HTML + JavaScript frontend which displays the answers to several questions, which are listed below.
 
 Some principles to remember throughout this project:
-1. This is a project about data processing, not UI. You should make a simple frontend to show the data, but you should spend as little time as you can on the frontend. No credit will be given for making prettier or more complicated frontend. You do not need to write any CSS.
+1. This is a project about data processing, not UI. You should make a simple frontend to show the data in valid semantic HTML. No credit will be given for making prettier or more complicated frontend. Do not write any CSS.
 2. You should assume the data will change in the future, but will have the same schema. So you shouldn't pre-compute anything. Your code should always read the data and calculate results from scratch.
 
 [`data.js`](./data.js) is a file containing three functions:
