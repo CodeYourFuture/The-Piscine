@@ -13,14 +13,16 @@ Your task is to write code which allows a user to save a link with a short descr
 
 You should make a frontend, which displays a list of bookmarked links and the user’s description. A user can create new bookmarks by submitting a form with the URL and the description. You should use **HTML and JavaScript only**. You should **not** use CSS. We want to focus on your ability to create the correct logic and not spend time on creating the perfect UI.
 
-TODO: Generate and link to storage.js
+## Supplied scaffolding
 
-`storage.js` is a file containing four functions:
+We have provided a `storage.js` file, which contains four functions to help with data storage. `storage.js` is a file containing four functions:
 
 - `getUserIds()`: when called, returns an array of strings, each of which is a user id
-- `getData(userId)`: when called, returns an array of objects, each of which contains information about a date and a topic that should be revised on that date. The agenda items are sorted by date, newest to oldest
-- `setData(userId, data)`: when called with a user id string and an array of objects as arguments, it will store the data for the user. Each of objects should contain information about a date and a topic that should be revised on that date
+- `getData(userId)`: when called with a user id string as an argument, returns an array of objects, each of which represents a bookmark that belongs to the user
+- `setData(userId, data)`: when called with a user id string and a data object as arguments, it will store the data for the user. The object should contain information about the bookmark, such as the URL, title and description. The function does not return anything
 - `clearData(userId)`: when called with a user id string as an argument, it will clear any stored data associated with the user id. This is provided to help with development, and is not required in the final code
+
+**Note**: None of the storage functions perform any validation or de-duplication, so ensure that you are sending the correct data before storing it.
 
 ## Requirements
 
@@ -34,7 +36,7 @@ You **must not** implement any kind of authentication. Just a drop-down to choos
 
 After picking a user, your website should display the list of bookmarks in reverse chronological order. For each bookmark, it should display the title and description of the bookmark. The title should be hyperlink to the URL of the bookmark. The timestamp at which the bookmark was created should be displayed.
 
-Your website must include a form with a text input for the title, a textarea for the description and submit button that allows a user to add a new topic. This form must be accessible, so for example, hitting the Enter key will also submit the topic name, the same as clicking the submit button.
+Your website must include a form with text inputs for the URL and title, a textarea for the description and submit button that allows a user to add a new topic. This form must be accessible, so for example, hitting the Enter key will also submit the topic name, the same as clicking the submit button.
 
 After the new data has been stored, the updated list of bookmarks must be displayed (including the new bookmark) for the relevant user.
 
