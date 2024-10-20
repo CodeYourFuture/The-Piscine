@@ -6,14 +6,16 @@ One of the difficulties of this approach is tracking which topic should be revis
 
 You should make a frontend, which displays an agenda of topics to revise on specific dates. You should use **HTML and JavaScript only**. You should **not** use CSS. We want to focus on your ability to create the correct logic and not spend time on creating the perfect UI.
 
-TODO: Generate and link to storage.js
+## Supplied scaffolding
 
-`storage.js` is a file containing four functions:
+We have provided a `storage.js` file, which contains four functions to help with data storage. `storage.js` is a file containing four functions:
 
 - `getUserIds()`: when called, returns an array of strings, each of which is a user id
-- `getData(userId)`: when called, returns an array of objects, each of which contains information about a date and a topic that should be revised on that date. The agenda items are sorted by date, newest to oldest
-- `setData(userId, data)`: when called with a user id string and an array of objects as arguments, it will store the data for the user. Each of objects should contain information about a date and a topic that should be revised on that date
+- `getData(userId)`: when called with a user id string as an argument, returns an array of objects, each of which represents an agenda item for the user
+- `setData(userId, data)`: when called with a user id string and an array of objects as arguments, it will append the agenda items data to the user's stored agenda. Each of the objects should contain information about the agenda item, such as the date and topic that should be revised on that date. The function does not return anything
 - `clearData(userId)`: when called with a user id string as an argument, it will clear any stored data associated with the user id. This is provided to help with development, and is not required in the final code
+
+**Note**: None of the storage functions perform any validation or de-duplication, so ensure that you are sending the correct data before storing it.
 
 ## Requirements
 
@@ -31,7 +33,7 @@ Your website must include a form with a text input, a date picker and submit but
 
 The date picker should default to today’s date, but allow selection of another date. You should use the built-in date picker for browsers, unless attempted as a bonus task. **No credit** is given for using an alternative date picker.
 
-When the form is submitted, your website should calculate the date to revise for one week, one month, three months, six months and one year from the selected date. Using these calculations, your website should store the topic name and any necessary revision date data using the functions from storage.js as described above.
+When the form is submitted, your website should calculate the date to revise for one week, one month, three months, six months and one year from the selected date. Using these calculations, your website should store the topic name and any necessary revision date data using the functions from `storage.js` as described above.
 
 After the new data has been stored, the updated agenda must be displayed (including the new topic) for the relevant user.
 
@@ -41,7 +43,7 @@ Your GitHub repository must contain unit tests which demonstrate that your code 
 
 All of the below requirements must be met for the project to be considered complete:
 
-- The website must contain a drop-down which lists two users
+- The website must contain a drop-down which lists at least two users
 - Selecting a user must display the agenda for the relevant user (see manual testing below)
 - If there is no agenda for the selected user, a message is displayed to explain this
 - The website must contain a form with inputs for a topic name and a date picker. The form should also have a submit button.
