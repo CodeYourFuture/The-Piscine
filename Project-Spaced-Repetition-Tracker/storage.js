@@ -26,12 +26,12 @@ export function getData(userId) {
 }
 
 /**
- * Store data for a specific user.
+ * Store data for a specific user. If there was already data for this user, this function preserves it and adds the new data at the end.
  *
  * @param {string} userId The user id to store data for
  * @param {any[]} data The data to store
  */
-export function setData(userId, data) {
+export function addData(userId, data) {
   const key = `stored-data-user-${userId}`;
 
   const existingData = localStorage.getItem(key) || [];
