@@ -42,7 +42,7 @@ Regardless of your group size, you must:
 As well as all previous requirements, you must:
 
 * Produce a script that can be run in a terminal via `node`, which outputs to standard out (via calls to `console.log`) an [iCal format](https://icalendar.org/) file containing entries for every day in the JSON file. You must not use recurring events. There must be one entry per commemorative day per year from 2020 until 2030 (inclusive).
-* If you save this output to a file, and import it into Google Calendar, it should show the days correctly in the calendar. There is a suggested workflow for testing this listed below.
+* If you save this output to an `.ics` file, and import it into Google Calendar, it should show the days correctly in the calendar. There is a suggested workflow for testing this listed below.
 * Logic for calculating dates must be shared between the web generator and the iCal generator.
 
 ### Requirements for groups of at least 3
