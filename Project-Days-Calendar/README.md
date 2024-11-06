@@ -1,6 +1,6 @@
 # Days calendar project
 
-There are some commemerative days which occur annually, but not on a fixed date.
+There are some commemorative days which occur annually, but not on a fixed date.
 
 For example, Ada Lovelace Day happens on the second Tuesday every October.
 
