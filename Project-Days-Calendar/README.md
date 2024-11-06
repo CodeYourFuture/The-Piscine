@@ -29,7 +29,7 @@ Regardless of your group size, you must:
 * Create an HTML page which, when loaded, displays a calendar.
 * The calendar must show every day of the current month, each as a rectangle. Each row of rectangles must show one week. The first column must show Mondays. The first day of the month must be shown in the first row.
 * There must be two buttons which, when clicked, switch what is displayed. One button must change the display to the previous month. The other button must change the display to the next month. On repeated clicks, these buttons must keep moving back/forwards in time, one month per click.
-* There must be a way to jump to a particular month and year, e.g. "October 2020".
+* There must be a way to jump to a particular month and year, e.g. "October 2020". For example, you could use a `<select>` tag for each of the month name and a reasonable range of years.
 * The days from the JSON file must appear correctly when the month they fall in is displayed. For example:
   * If October 2024 is being shown, October 8th must show Ada Lovelace Day.
   * If October 2025 is being shown, October 14th must show Ada Lovelace Day.
@@ -49,7 +49,7 @@ As well as all previous requirements, you must:
 
 As well as all previous requirements, you must:
 * Fetch a description of the day from the URL supplied in the JSON file.
-* In the HTML page, if you click on a listed commemorative day, the page should show a description of the day.
+* In the HTML page, if you click on a listed commemorative day, the page should show a description of the day, for instance in the calendar event or as a modal dialog in the page.
 * In the iCal file, the **DESCRIPTION** field should contain the description of the day.
 
 ## How to test Google Calendar imports
@@ -65,6 +65,8 @@ Import your `.ics` file into the calendar. To do this:
 2. Select your test calendar from the "Add to calendar" drop down".
 3. Select the `.ics` file you have created.
 4. Press "Import".
+
+Each time you do this, you probably want to delete your Test calendar, and create a new one.
 
 ## Supplied scaffolding
 
