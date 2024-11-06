@@ -28,7 +28,7 @@ Regardless of your group size, you must:
 
 * Create an HTML page which, when loaded, displays a calendar.
 * The calendar must show every day of the current month, each as a rectangle. Each row of rectangles must show one week. The first column must show Mondays. The first day of the month must be shown in the first row.
-* There must be two links or buttons which, when clicked, switch what is displayed. One button must change the display to the previous month. The other button must change the display to the next month. On repeated clicks, these buttons must keep moving back/forwards in time, one month per click.
+* There must be two buttons which, when clicked, switch what is displayed. One button must change the display to the previous month. The other button must change the display to the next month. On repeated clicks, these buttons must keep moving back/forwards in time, one month per click.
 * There must be a way to jump to a particular month and year, e.g. "October 2020".
 * The days from the JSON file must appear correctly when the month they fall in is displayed. For example:
   * If October 2024 is being shown, October 8th must show Ada Lovelace Day.
