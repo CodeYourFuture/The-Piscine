@@ -59,4 +59,10 @@ All of the below requirements must be met for the project to be considered compl
 
 Below is an example of a table showing the overall ranking for 3 users: CodeYourFuture, SallyMcGrath and 40thieves.
 
+| Username       | Clan           | Score |
+| -------------- | -------------- | ----- |
+| SallyMcGrath   | CodeYourFuture | 1079  |
+| CodeYourFuture | CodeYourFuture | 751   |
+| 40thieves      |                | 10    |
+
 Please note that the individual ranks/scores shown in the above table may not be accurate as they may change if new katas are completed by these accounts. To see up-to-date data, you can look it up in the API responses: [CodeYourFuture](https://www.codewars.com/api/v1/users/CodeYourFuture), [SallyMcGrath](https://www.codewars.com/api/v1/users/SallyMcGrath), [40thieves](https://www.codewars.com/api/v1/users/40thieves).
