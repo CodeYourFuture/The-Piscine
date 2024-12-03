@@ -2,7 +2,7 @@
 
 When writing text, it is helpful to have a tool to check that you are spelling correctly. Most computers even have it built in to the operating system.
 
-Your task will be to build your own spell checker for a simplified language called ["Basic English"](https://en.wikipedia.org/wiki/Basic_English) that contains a much smaller set of words than regular English. A list of all around 850 words has been provided for you in `words.json`, so that you can easily import the list of words.
+Your task is to build your own spell checker for a simplified language called ["Basic English"](https://en.wikipedia.org/wiki/Basic_English) that contains a much smaller set of words than regular English. Use the list provided in `words.json`.
 
 Make a website where a user can write some text and then check if the text is valid Basic English. You must **focus on HTML and JavaScript**. Some CSS can be used, but the website's design **is not the focus of the assessment**. We will assess you on correct logic, not on a pretty UI that is incomplete.
 
