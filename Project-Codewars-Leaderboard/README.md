@@ -40,7 +40,7 @@ A test demonstrating the usage of the [nock testing library](https://github.com/
 
 You **must** run `npm install` within the `Project-Codewars-Leaderboard` folder in order for the scaffolding to work.
 
-Running `node index.test.mjs` (within the `Project-Codewars-Leaderboard` folder) will run the tests.
+Running `node test` (within the `Project-Codewars-Leaderboard` folder) will run the tests.
 
 ## Rubric
 
