@@ -4,8 +4,8 @@
 // data in the format that you want.
 // IMPORTANT: You _must_ run npm install within the Project-Codewars-Leaderboard
 // folder for this to work.
-// You can delete the contents of the file once you have understood how it
-// works.
+// You can change or delete the contents of the file once you have understood
+// how it works.
 
 import test from "node:test";
 import assert from "node:assert";

@@ -4,7 +4,7 @@ Codewars provides [an API](https://dev.codewars.com/) that can be used to look u
 
 We will use this to build a leaderboard, similar to [the one on the Codewars website](https://www.codewars.com/users/leaderboard/ranks).
 
-Your task is to create a website which allows a user to input a list of Codewars users, fetch their scores from the API and then display them so that you can compare. You should **focus on HTML and JavaScript**. Some CSS is required for completing this task, but the website's design **is not the focus of the assessment**. We will assess you on correct logic not on a perfect UI that is incomplete.
+Your task is to create a website which allows a user to input a list of Codewars users, fetch their scores from the API and then display them so that you can compare. You should **focus on HTML and JavaScript**. Some CSS is required for completing this task, but the website's design **is not the focus of the assessment**. We will assess you on correct logic. You don't need a perfect UI, and it's ok if your UI is incomplete.
 
 ## Requirements
 
@@ -41,6 +41,8 @@ A test demonstrating the usage of the [nock testing library](https://github.com/
 You **must** run `npm install` within the `Project-Codewars-Leaderboard` folder in order for the scaffolding to work.
 
 Running `node index.test.mjs` (within the `Project-Codewars-Leaderboard` folder) will run the tests.
+
+You are welcome to use as much of the provided files as you want, or to ignore/delete them if you don't.
 
 ## Rubric
 
