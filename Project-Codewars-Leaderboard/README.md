@@ -30,6 +30,8 @@ Your website should display a table for the ranking data that the user has selec
 
 The table should have columns for username, clan and score. Each user should have a row in the table showing their relevant data points for selected language ranking. The rows should be sorted so that the user with the highest score for the selected language ranking is at the top, and the user with the lowest score is at the bottom.
 
+If a user does not have a ranking for the currently selected language, the user should not be shown in the table.
+
 The user with the highest score should be highlighted in some (fun!) way so that their achievement can be celebrated.
 
 Your GitHub repository must contain unit tests which demonstrate that your code works.
