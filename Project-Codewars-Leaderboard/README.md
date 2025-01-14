@@ -42,7 +42,7 @@ A test demonstrating the usage of the [nock testing library](https://github.com/
 
 You **must** run `npm install` within the `Project-Codewars-Leaderboard` folder in order for the scaffolding to work.
 
-Running `node test` (within the `Project-Codewars-Leaderboard` folder) will run the tests.
+Running `npm test` (within the `Project-Codewars-Leaderboard` folder) will run the tests.
 
 You are welcome to use as much of the provided files as you want, or to ignore/delete them if you don't.
 
