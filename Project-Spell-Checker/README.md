@@ -14,7 +14,7 @@ Your website must be hosted on the internet, and must be automatically deployed 
 
 You must be able to explain every line of code in your project.
 
-Your website should display an input, which allows the user to write some text. Your website should also have some way of triggering a spell check on the text that the user has written.
+Your website should display a text input, which allows the user to a few sentences of text. Your website should also have some way of triggering a spell check on the text that the user has written.
 
 When the spell check is triggered, your website should check every word that the user has typed to see if it exists in the Basic English word list that we have provided (in `words.json`).
 
