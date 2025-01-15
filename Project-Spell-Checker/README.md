@@ -26,7 +26,7 @@ When the user changes the text in the input, the warning about misspelled words 
 
 The input text can sometimes include punctuation (such as commas or full stops). Your website should not identify words that include some punctuation as spelling mistakes. So for example, "make a cake, please" will not highlight "cake" as a spelling mistake. However, if a word that is not in the Basic English word list and is next to some punctuation, it still should be highlighted as a spelling mistake.
 
-Sometimes a hyphen (`-`) can join two words, which should be treated as separate. For example "blue-green" should _not_ be highlighted as both "blue" and "green" are found in the Basic English dictionary. However, the first word in "feisty-cat" should be highlighted because "feisty" is not in the Basic English dictionary.
+A hyphen (`-`) can join two words, which should be treated as separate. For example "blue-green" should _not_ be highlighted as both "blue" and "green" are found in the Basic English dictionary. However, the first word in "feisty-cat" should be highlighted because "feisty" is not in the Basic English dictionary.
 
 Your GitHub repository must contain unit tests which demonstrate that your code works. End to end tests are optional.
 
