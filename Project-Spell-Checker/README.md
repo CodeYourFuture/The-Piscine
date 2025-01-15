@@ -26,6 +26,8 @@ When the user changes the text in the input, the warning about misspelled words 
 
 The input text can sometimes include punctuation (such as commas or full stops). Your website should not identify words that include some punctuation as spelling mistakes. So for example, "make a cake, please" will not highlight "cake" as a spelling mistake. However, if a word that is not in the Basic English word list and is next to some punctuation, it still should be highlighted as a spelling mistake.
 
+Sometimes a hyphen (`-`) can join two words, which should be treated as separate. For example "blue-green" should _not_ be highlighted as both "blue" and "green" are found in the Basic English dictionary. However, the first word in "feisty-cat" should be highlighted because "feisty" is not in the Basic English dictionary.
+
 Your GitHub repository must contain unit tests which demonstrate that your code works. End to end tests are optional.
 
 ## Rubric
@@ -40,6 +42,7 @@ All of the below requirements must be met for the project to be considered compl
 - If a word does not exist in the dictionary, then a mechanism should exist to add the word to the dictionary. Adding the word to the dictionary should re-trigger the spell check and the newly added word should no longer be highlighted
 - "Correct" words (i.e. those found in the Basic English dictionary) that are adjacent to punctuation (which is defined as the following characters: `,.?!":;`) should not be marked as spelling mistakes
 - "Incorrect" words (i.e. those not found in the Basic English dictionary) that are adjacent to punctuation characters should still be marked as spelling mistakes
+- Words joined by hyphen should be treated separately, so if one or both of the words are "incorrect" (i.e. those not found in the Basic English dictionary) then it should be marked as a spelling mistake
 - The website must score 100 for accessibility in Lighthouse
 - Unit tests must be written for at least one non-trivial function
 
@@ -48,9 +51,11 @@ Some examples of correct Basic English:
 - `he go to the island`
 - `they make a fire`
 - `he is married, she is not`
+- `fire is red-orange`
 
 Some examples of incorrect Basic English:
 
 - `hello world`
 - `they create some dinner`
 - `she give gift, then go out`
+- `he like egg-nog`
