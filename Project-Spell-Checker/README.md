@@ -28,6 +28,8 @@ The input text can sometimes include punctuation (such as commas or full stops).
 
 A hyphen (`-`) can join two words, which should be treated as separate. For example "blue-green" should _not_ be highlighted as both "blue" and "green" are found in the Basic English dictionary. However, the first word in "feisty-cat" should be highlighted because "feisty" is not in the Basic English dictionary.
 
+Words that begin with capital letters, such as proper nouns and names, should always be treated as "correct" words and so should _not_ be highlighted. For example, "Ali" or "London" would not be highlighted, despite not being in the Basic English dictionary.
+
 Your GitHub repository must contain unit tests which demonstrate that your code works. End to end tests are optional.
 
 ## Rubric
@@ -52,6 +54,7 @@ Some examples of correct Basic English:
 - `they make a fire`
 - `he is married, she is not`
 - `fire is red-orange`
+- `I love Glasgow`
 
 Some examples of incorrect Basic English:
 
@@ -59,3 +62,4 @@ Some examples of incorrect Basic English:
 - `they create some dinner`
 - `she give gift, then go out`
 - `he like egg-nog`
+- `where is birmingham`
