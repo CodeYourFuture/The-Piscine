@@ -20,6 +20,8 @@ When the spell check is triggered, your website should check every word that the
 
 If there are any words that aren't in the Basic English word list, you should consider those words as a spelling mistake. All spelling mistakes should be presented to the user underneath the input, along with some text explaining that the words are misspelled. They should be highlighted in some way that makes it obvious that there is a spelling mistake.
 
+If a misspelled word is detected, there should be a way for the user to add that word to the dictionary. The spell check should then be triggered again, and the word that was added to the dictionary should no longer be considered a misspelled word (so should _not_ be highlighted). **Note**: the custom dictionary does _not_ need to be saved, so reloading the page will reset back to the initial dictionary.
+
 When the user changes the text in the input, the warning about misspelled words should be cleared.
 
 The input text can sometimes include punctuation (such as commas or full stops). Your website should not identify words that include some punctuation as spelling mistakes. So for example, "make a cake, please" will not highlight "cake" as a spelling mistake. However, if a word that is not in the Basic English word list and is next to some punctuation, it still should be highlighted as a spelling mistake.
@@ -32,11 +34,12 @@ All of the below requirements must be met for the project to be considered compl
 
 - The website has an input that allows the user to write some text
 - The website has a way for the user to triggering a spell check
-- When triggered, the spell check should check every word in the input to see if it exists in the Basic English word list
-- If the word does not exist in the word list, then it should be highlighted below the input as a spelling mistake
+- When triggered, the spell check should check every word in the input to see if it exists in the Basic English dictionary
+- If a word does not exist in the dictionary, then it should be highlighted below the input as a spelling mistake
 - It should be obvious to the user that there is a spelling mistake, both with visuals and some explanatory text
-- "Correct" words (i.e. those found in the Basic English word list) that are adjacent to punctuation (which is defined as the following characters: `,.?!":;`) should not be marked as spelling mistakes
-- "Incorrect" words (i.e. those not found in the Basic English word list) that are adjacent to punctuation characters should still be marked as spelling mistakes
+- If a word does not exist in the dictionary, then a mechanism should exist to add the word to the dictionary. Adding the word to the dictionary should re-trigger the spell check and the newly added word should no longer be highlighted
+- "Correct" words (i.e. those found in the Basic English dictionary) that are adjacent to punctuation (which is defined as the following characters: `,.?!":;`) should not be marked as spelling mistakes
+- "Incorrect" words (i.e. those not found in the Basic English dictionary) that are adjacent to punctuation characters should still be marked as spelling mistakes
 - The website must score 100 for accessibility in Lighthouse
 - Unit tests must be written for at least one non-trivial function
 
