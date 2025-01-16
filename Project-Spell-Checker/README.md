@@ -18,7 +18,7 @@ Your website should display a text input, which allows the user to a few sentenc
 
 When the spell check is triggered, your website should check every word that the user has typed to see if it exists in the Basic English word list that we have provided (in `words.json`).
 
-If there are any words that aren't in the Basic English word list, you should consider those words as a spelling mistake. All spelling mistakes should be presented to the user underneath the input, along with some text explaining that the words are misspelled. They should be highlighted in some way that makes it obvious that there is a spelling mistake.
+If there are any words that aren't in the Basic English word list, you should consider those words as a spelling mistake. All spelling mistakes should be presented to the user underneath the input, along with some text explaining that the words are misspelled. This text should be styled with highlighting in some way that makes it obvious that there is a spelling mistake. **Note**: highlighting the word within the input itself is quite difficult, so don't attempt it as part of the assessment.
 
 If a misspelled word is detected, there should be a way for the user to add that word to the dictionary. The spell check should then be triggered again, and the word that was added to the dictionary should no longer be considered a misspelled word (so should _not_ be highlighted). **Note**: the custom dictionary does _not_ need to be saved, so reloading the page can reset back to the initial dictionary.
 
