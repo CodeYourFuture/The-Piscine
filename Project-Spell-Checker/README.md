@@ -4,7 +4,7 @@ When writing text, it is helpful to have a tool to check that you are spelling c
 
 Your task is to build your own spell checker for a simplified language called ["Basic English"](https://en.wikipedia.org/wiki/Basic_English) that contains a much smaller set of words than regular English. Use the list provided in `words.json`.
 
-Make a website where a user can write some text and then check if the text is valid Basic English. You must **focus on HTML and JavaScript**. Some CSS can be used, but the website's design **is not the focus of the assessment**. We will assess you on correct logic, not on a pretty UI that is incomplete.
+Make a website where a user can write some text and then check if the text is valid Basic English. You must **focus on HTML and JavaScript**. Some CSS can be used, but the website's design **is not the focus of the assessment**. We will assess you on correct logic. You will not pass if you produce a pretty UI that has missing or incorrect logic.
 
 ## Requirements
 
