@@ -34,6 +34,12 @@ Words that begin with capital letters, such as proper nouns and names, should al
 
 Your GitHub repository must contain unit tests which demonstrate that your code works. End to end tests are optional.
 
+## Supplied scaffolding
+
+We have supplied a few sample files in the repo to demonstrate how you can define JSON data in one file and access this both from another file. Feel free to use these files in your solution if you want, or to just use them for inspiration for your own solution.
+
+Note that when running locally, in order to open a web page which uses modules, you must serve the directory over HTTP e.g. with https://www.npmjs.com/package/http-server - you can't open the `index.html` file using a `file://` URL.
+
 ## Rubric
 
 All of the below requirements must be met for the project to be considered complete:

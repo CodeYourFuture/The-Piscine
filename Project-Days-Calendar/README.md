@@ -72,7 +72,7 @@ Each time you do this, you probably want to delete your Test calendar, and creat
 
 We have supplied a few sample files in the repo to demonstrate how you can define functions in one file, and use them both from a web page and a Node application. Feel free to use these files in your solution if you want, or to just use them for inspiration for your own solution.
 
-Note that when running locally, in order to open a web page which uses modules, you must serve the directory over HTTP e.g. with https://www.npmjs.com/package/http-server - you can't open the index.html file using a file:// URL.
+Note that when running locally, in order to open a web page which uses modules, you must serve the directory over HTTP e.g. with https://www.npmjs.com/package/http-server - you can't open the `index.html` file using a `file://` URL.
 
 ## Rubric
 
