@@ -12,7 +12,7 @@ The goal of this project is to present this data usefully to users.
 
 ## Requirements
 
-This may be an individual or a team project - your class leaders will tell you which you are doing.
+This may be an individual or a team project - your class leaders will tell you which you are doing. If it is a team project, they will also tell you how the groups will work.
 
 Some of the requirements of this project are only required if you are working in a group of at least a certain size.
 
@@ -111,3 +111,7 @@ Note that when running locally, in order to open a web page which uses modules, 
 Text for Ada Lovelace Day (which must be fetched via API):
 
 > Ada Lovelace was a mathematician who made contributions to the field of computing in its very early days. On Ada Lovelace Day we celebrate and raise awareness of the contributions of women to STEM fields.
+
+## Working in a group
+
+If you working in a group, we recommend that **all** team members read the [Working in a group guidelines](../working-in-a-group.md). Confirm all group members have read and understand these before starting to write code.

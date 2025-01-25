@@ -19,6 +19,8 @@ We have provided a `storage.js` file, which contains four functions to help with
 
 ## Requirements
 
+This is intended to be a group project - your class leaders will tell you how the groups will work.
+
 You must submit both a link to your GitHub repo, and a link to the deployed website.
 
 Your website must be hosted on the internet, and must be automatically deployed when you merge changes to your GitHub repo.
@@ -98,3 +100,7 @@ Expected result:
   - Variables in Python, 5th November 2025
   - Each of the revision dates show the topic name and the relevant date (styling/formatting does not matter as long as it is understandable)
 - The form remains on the website (allowing for further topics to be added)
+
+## Working in a group
+
+If you working in a group, we recommend that **all** team members read the [Working in a group guidelines](../working-in-a-group.md). Confirm all group members have read and understand these before starting to write code.
