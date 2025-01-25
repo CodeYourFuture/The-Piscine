@@ -7,10 +7,12 @@ We have supplied a collection of data for you to analyse. Your task is to write 
 Make a small HTML + JavaScript frontend which displays the answers to several questions, which are listed below.
 
 Some principles to remember throughout this project:
+
 1. This is a project about data processing, not UI. You should make a simple frontend to show the data in valid semantic HTML. No credit will be given for making prettier or more complicated frontend. Do not write any CSS.
 2. You should assume the data will change in the future, but will have the same schema. So you shouldn't pre-compute anything. Your code should always read the data and calculate results from scratch.
 
-[`data.js`](./data.js) is a file containing three functions:
+We have provided a `data.js` file, which contains three functions to provide data for you to analyse. `data.js` is a file containing four functions:
+
 1. `getUserIDs()`: when called, returns an array of strings, each of which is a user ID.
 1. `getListenEvents(userID)`: when called, returns an array of objects, each of which contains information about a single time that the given user listened to a song. The listen events are sorted by when they happened, oldest to newest.
 2. `getSong(songID)`: when called with one string as an argument, returns an an object containing information about a single song.
@@ -38,6 +40,12 @@ Your GitHub repository must contain unit tests which demonstrate that your code 
 5. What song did the user listen to the most times in a row (i.e. without any other song being listened to in between)? How many times was it listened to?
 6. Are there any songs that the user listened to every day between the first day that user listened to any songs and the last day that user listened to any songs? If the answer is yes, you should show which one(s). If the answer is no, you should not show anything about this question.
 7. What were the user's top three genres to listen to by number of listens?
+
+## Supplied scaffolding
+
+In addition to `data.js`, we have supplied a few sample files in the repo to demonstrate how you can define functions in one file and use them from another file. Feel free to use these files in your solution if you want, or to just use them for inspiration for your own solution.
+
+Note that when running locally, in order to open a web page which uses modules, you must serve the directory over HTTP e.g. with https://www.npmjs.com/package/http-server - you can't open the `index.html` file using a `file://` URL.
 
 ## Rubric
 
