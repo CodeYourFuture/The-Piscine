@@ -15,7 +15,11 @@ You should make a frontend, which displays a list of bookmarked links and the us
 
 ## Supplied scaffolding
 
-We have provided a `storage.js` file, which contains four functions to help with data storage. `storage.js` is a file containing four functions:
+We have supplied a few sample files in the repo to demonstrate how you can define functions in one file and use them from another file. Feel free to use these files in your solution if you want, or to just use them for inspiration for your own solution.
+
+Note that when running locally, in order to open a web page which uses modules, you must serve the directory over HTTP e.g. with https://www.npmjs.com/package/http-server - you can't open the `index.html` file using a `file://` URL.
+
+We have also provided a `storage.js` file, which contains four functions to help with data storage. `storage.js` is a file containing four functions:
 
 - `getUserIds()`: when called, returns an array of strings, each of which is a user id
 - `getData(userId)`: when called with a user id string as an argument, returns an array of objects, each of which represents a bookmark that belongs to the user
