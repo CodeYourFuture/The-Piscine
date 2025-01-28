@@ -4,7 +4,7 @@
 // You can't open the index.html file using a file:// URL.
 
 import { getGreeting } from "./common.mjs";
-import daysData from "../days.json" with { type: "json" };
+import daysData from "./days.json" with { type: "json" };
 
 window.onload = function() {
     document.querySelector("body").innerText = `${getGreeting()} - there are ${daysData.length} known days`;
