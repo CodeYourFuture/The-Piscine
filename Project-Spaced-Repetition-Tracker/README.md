@@ -49,11 +49,11 @@ Your GitHub repository must contain unit tests which demonstrate that your code 
 
 All of the below requirements must be met for the project to be considered complete:
 
-- The website must contain a drop-down which lists at least two users
+- The website must contain a drop-down which lists exactly 5 users
 - Selecting a user must display the agenda for the relevant user (see manual testing below)
 - If there is no agenda for the selected user, a message is displayed to explain this
 - The website must contain a form with inputs for a topic name and a date picker. The form should also have a submit button.
-- The date picker must default to today’s date
+- The date picker must default to today’s date on first page load
 - Submitting the form adds a new topic to revise for the relevant user only. The topic’s dates to revise are calculated as one week, one month, three months, six months and one year from the selected date (see manual testing below)
 - After creating a new topic to revise, the agenda for the current user is shown, including the new topic
 - The website must score 100 for accessibility in Lighthouse
@@ -61,21 +61,25 @@ All of the below requirements must be met for the project to be considered compl
 
 Below are some manual testing steps and expected results, which will be run on all websites to fairly assess them.
 
+Pick the year after the current one (e.g. in 2025, pick 2026).
+
+Where an instruction says `${YEAR}`, use that year. Where an instruction says `${YEAR+1}`, use the following year.
+
 Steps:
 
 1. Select User 1 from the drop-down
 1. Add “Functions in JS” to the text input
-1. Select the date 19th July 2024 from the date picker
+1. Select the date 19th July ${YEAR} from the date picker
 1. Submit the form
 
 Expected result:
 
 - The agenda for User 1 is shown, with the revision dates shown as follows:
-  - Functions in JS, 26th July 2024
-  - Functions in JS, 19th August 2024
-  - Functions in JS, 19th October 2024
-  - Functions in JS, 19th January 2025
-  - Functions in JS, 19th July 2025
+  - Functions in JS, 26th July ${YEAR}
+  - Functions in JS, 19th August ${YEAR}
+  - Functions in JS, 19th October ${YEAR}
+  - Functions in JS, 19th January ${YEAR+1}
+  - Functions in JS, 19th July ${YEAR+1}
 - Each of the revision dates show the topic name and the relevant date (styling/formatting does not matter as long as it is understandable)
 - The form remains on the website (allowing for further topics to be added)
 
@@ -83,26 +87,43 @@ Steps:
 
 1. Select User 2 from the drop-down
 1. Add “Variables in Python” to the text input
-1. Select the date 5th November 2024 from the date picker
+1. Select the date 5th November ${YEAR} from the date picker
 1. Submit the form
 1. Add “Functions in Python” to the text input
-1. Select the date 5th October 2024 from the date picker
+1. Select the date 5th October ${YEAR} from the date picker
 1. Submit the form
 
 Expected result:
 
 - The agenda for User 2 is shown, with the revision dates shown as follows:
-  - Functions in Python, 12th October 2024
-  - Functions in Python, 5th November 2024
-  - Variables in Python, 12th November 2024
-  - Variables in Python, 5th December 2024
-  - Functions in Python, 5th January 2025
-  - Variables in Python, 5th February 2025
-  - Functions in Python, 5th April 2025
-  - Variables in Python, 5th May 2025
-  - Functions in Python, 5th October 2025
-  - Variables in Python, 5th November 2025
+  - Functions in Python, 12th October ${YEAR}
+  - Functions in Python, 5th November ${YEAR}
+  - Variables in Python, 12th November ${YEAR}
+  - Variables in Python, 5th December ${YEAR}
+  - Functions in Python, 5th January ${YEAR+1}
+  - Variables in Python, 5th February ${YEAR+1}
+  - Functions in Python, 5th April ${YEAR+1}
+  - Variables in Python, 5th May ${YEAR+1}
+  - Functions in Python, 5th October ${YEAR+1}
+  - Variables in Python, 5th November ${YEAR+1}
   - Each of the revision dates show the topic name and the relevant date (styling/formatting does not matter as long as it is understandable)
+- The form remains on the website (allowing for further topics to be added)
+
+Steps:
+
+1. Select User 3 from the drop-down
+1. Add “Codewars” to the text input
+1. Select the date exactly one month ago (e.g. if it's currently July 26th, select June 26th this year) from the date picker
+1. Submit the form
+
+Expected result:
+
+- The agenda for User 3 is shown, with the revision dates shown as follows:
+  - Codewars, Today's date
+  - Codewars, Two months in the future (the same day of the month as today)
+  - Codewars, 5 months in the future (the same day of the month as today)
+  - Codewars, 11 months in the future (the same day of the month as today)
+- Each of the revision dates show the topic name and the relevant date (styling/formatting does not matter as long as it is understandable)
 - The form remains on the website (allowing for further topics to be added)
 
 ## Working in a group
