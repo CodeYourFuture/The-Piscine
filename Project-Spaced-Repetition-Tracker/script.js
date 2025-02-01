@@ -6,7 +6,23 @@
 
 import { getUserIds } from "./storage.js";
 
+
+function populateUserDropDown() {
+  const userDropDown = document.querySelector("#user-dropDown");
+
+  getUserIds().forEach((id) => {
+    const option = document.createElement("option");
+    option.value = id;
+    option.textContent = `User ${id}`;
+    userDropDown.appendChild(option);
+  });
+}
+
+
+function initialiseApp() {
+  populateUserDropDown();  
+}
+
 window.onload = function () {
-  const users = getUserIds();
-  document.querySelector("body").innerText = `There are ${users.length} users`;
+  initialiseApp();
 };
