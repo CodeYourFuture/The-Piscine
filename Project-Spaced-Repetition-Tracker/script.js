@@ -12,13 +12,11 @@ import { clearData } from "./storage.js";
 const users = getUserIds();
 function createDropDown(users){
   let dropdownSelect = document.querySelector("#dropdown");
-  dropdownSelect.addEventListener("click", ()=>{
     for(let i = 0; i < users.length; i++){
       let option = document.createElement("option");
       option.innerHTML = `User ${users[i]}`;
       dropdownSelect.appendChild(option);
     }
-  })
 }
 
 
