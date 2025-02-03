@@ -23,45 +23,31 @@ function createDropDown(users) {
   }
 }
 
-/////creating agenda when clicked on a user/////
 
-document.querySelector("#dropdown").addEventListener("change", function () {
-  const selectedUser = this.value.replace("User ", "").trim(); // Extract userId
-  displayAgenda(selectedUser);
-});
 
-function displayAgenda(userId) {
-  const agendaContainer = document.querySelector("#agenda");
-  agendaContainer.innerHTML = ""; // Clear previous content
+function displayAgendas(userId, gettingData1) {
+  let ulAgendas = document.querySelector("#agenda");
+  ulAgendas.innerHTML = ""; // Clear previous content
 
-  const today = new Date();
-
-  // Get the agenda for the selected user
-  const agenda = getData(userId);
-
-  if (!agenda || agenda.length === 0) {
-    agendaContainer.innerHTML = "<p>No upcoming agenda for this user.</p>";
-    return;
+  if (!gettingData1 || gettingData1.length === 0) {
+    ulAgendas.innerHTML = "<p>No upcoming agenda for this user.</p>";
   }
+  // Sort the gettingData array by date
+  let gettingData = gettingData1.sort((a, b) => {
+    // Convert date strings into Date objects for comparison
+    let dateA = new Date(a.date);
+    let dateB = new Date(b.date);
 
-  // Filter and sort agenda items
-  const upcomingAgenda = agenda
-    .filter((item) => new Date(item.date) >= today) // Remove past dates
-    .sort((a, b) => new Date(a.date) - new Date(b.date)); // Sort by date
-
-  if (upcomingAgenda.length === 0) {
-    agendaContainer.innerHTML = "<p>No upcoming agenda for this user.</p>";
-    return;
-  }
-
+    // Sort in ascending order: Date A comes before Date B
+    return dateA - dateB;  // If dateA < dateB, result is negative, meaning a comes first
+  });
   // Create a list of upcoming topics
   
-  const ul = document.getElementById("agenda-list");
-  upcomingAgenda.forEach((item) => {
-    const li = document.createElement("li");
-    li.textContent = `${item.date} - ${item.topic}`;
-    ul.appendChild(li);
-  });
+  for(let i of gettingData){
+    let liElement = document.createElement("li");
+    liElement.innerHTML = `${i.topic}, ${formatDate(userId, i.date)}`
+    ulAgendas.appendChild(liElement);
+  }
 
 }
 
