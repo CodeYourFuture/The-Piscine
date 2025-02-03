@@ -18,6 +18,7 @@ function createDropDown(users) {
   let dropdownSelect = document.querySelector("#dropdown");
   for (let i = 0; i < users.length; i++) {
     let option = document.createElement("option");
+    option.id = i + 1;
     option.innerHTML = `User ${users[i]}`;
     dropdownSelect.appendChild(option);
   }
@@ -96,14 +97,17 @@ function formatDate(userId, date){
   let year = dateArr[0];
   if(userId == 3){
     let today = new Date();
+    let currentYear = today.getFullYear(); // current year
     let currentMonth = today.getMonth() + 1;  // Add 1 to get the month as 1-based index
-    let futureMonth = Number(dateArr[1]);
-    let result = futureMonth - currentMonth;
+    let futureMonth = Number(dateArr[1]); // future month
+    let futureYear = Number(dateArr[0]); // future year
 
-    return `${result} months in the future (the same day of the month as today)`;
+    let monthsDifference = (futureYear - currentYear) * 12 + (futureMonth - currentMonth); // calculating months
+
+    return `${monthsDifference} months in the future (the same day of the month as today)`;
   }
   else{
-    const formattedDate = `${day} ${month} ${year}`;
+    const formattedDate = `${day} ${month} ${year}`; // otherwise shows normal date if user is not user 3
     return formattedDate;
   }
   
