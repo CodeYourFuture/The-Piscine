@@ -9,8 +9,10 @@ import { getData } from "./storage.js";
 import { addData } from "./storage.js";
 import { clearData } from "./storage.js";
 
-//creating the dropdown for 5 users
+let formInput = document.querySelector("#form-input");
+formInput.style.display = "none"; // Hide form
 
+//creating the dropdown for 5 users
 const users = getUserIds();
 function createDropDown(users) {
   let dropdownSelect = document.querySelector("#dropdown");
