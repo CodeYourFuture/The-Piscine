@@ -21,6 +21,16 @@ function createDropDown(users) {
     option.innerHTML = `User ${users[i]}`;
     dropdownSelect.appendChild(option);
   }
+  dropdownSelect.addEventListener("change", ()=>{
+    formInput.style.display = "block"; // Show form
+    let selectedOption = dropdownSelect.options[dropdownSelect.selectedIndex];
+    let userId = selectedOption.id;
+    console.log(userId);
+    formData(userId);
+    let gettingData = getData(userId);
+    console.log(gettingData);
+    displayAgendas(userId, gettingData);
+  })
 }
 
 function formData(userId){
