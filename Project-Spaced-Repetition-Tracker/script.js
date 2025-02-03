@@ -9,58 +9,108 @@ import { getData } from "./storage.js";
 import { addData } from "./storage.js";
 import { clearData } from "./storage.js";
 
-//creating the dropdown for 5 users
+let formInput = document.querySelector("#form-input");
+formInput.style.display = "none"; // Hide form
 
+//creating the dropdown for 5 users
 const users = getUserIds();
 function createDropDown(users) {
   let dropdownSelect = document.querySelector("#dropdown");
   for (let i = 0; i < users.length; i++) {
     let option = document.createElement("option");
+    option.id = i + 1;
     option.innerHTML = `User ${users[i]}`;
     dropdownSelect.appendChild(option);
   }
+  dropdownSelect.addEventListener("change", ()=>{
+    formInput.style.display = "block"; // Show form
+    let selectedOption = dropdownSelect.options[dropdownSelect.selectedIndex];
+    let userId = selectedOption.id;
+    console.log(userId);
+    formData(userId);
+    let gettingData = getData(userId);
+    console.log(gettingData);
+    displayAgendas(userId, gettingData);
+  })
 }
 
-/////creating agenda when clicked on a user/////
+function formData(userId){ // getting data from form and add them to local storage
+  
+  let formTopic = document.querySelector("#topic-form");
+  let dateForm = document.querySelector("#date-form");
+  let buttonForm = document.querySelector("#form-button");
+  
+  buttonForm.onclick = function(event) { // Overwrites previous event listener
+    let dataForm = {
+        topic: formTopic.value,
+        date: dateForm.value
+    };
+    console.log(dataForm);
 
-document.querySelector("#dropdown").addEventListener("change", function () {
-  const selectedUser = this.value.replace("User ", "").trim(); // Extract userId
-  displayAgenda(selectedUser);
-});
+    addData(userId, dataForm);
+};
 
-function displayAgenda(userId) {
-  const agendaContainer = document.querySelector("#agenda");
-  agendaContainer.innerHTML = ""; // Clear previous content
+}
 
-  const today = new Date();
+function displayAgendas(userId, gettingData1) {
+  let ulAgendas = document.querySelector("#agenda");
+  ulAgendas.innerHTML = ""; // Clear previous content
 
-  // Get the agenda for the selected user
-  const agenda = getData(userId);
-
-  if (!agenda || agenda.length === 0) {
-    agendaContainer.innerHTML = "<p>No upcoming agenda for this user.</p>";
-    return;
+  if (!gettingData1 || gettingData1.length === 0) {
+    ulAgendas.innerHTML = "<p>No upcoming agenda for this user.</p>";
   }
+  // Sort the gettingData array by date
+  let gettingData = gettingData1.sort((a, b) => {
+    // Convert date strings into Date objects for comparison
+    let dateA = new Date(a.date);
+    let dateB = new Date(b.date);
 
-  // Filter and sort agenda items
-  const upcomingAgenda = agenda
-    .filter((item) => new Date(item.date) >= today) // Remove past dates
-    .sort((a, b) => new Date(a.date) - new Date(b.date)); // Sort by date
-
-  if (upcomingAgenda.length === 0) {
-    agendaContainer.innerHTML = "<p>No upcoming agenda for this user.</p>";
-    return;
-  }
-
+    // Sort in ascending order: Date A comes before Date B
+    return dateA - dateB;  // If dateA < dateB, result is negative, meaning a comes first
+  });
   // Create a list of upcoming topics
   
-  const ul = document.getElementById("agenda-list");
-  upcomingAgenda.forEach((item) => {
-    const li = document.createElement("li");
-    li.textContent = `${item.date} - ${item.topic}`;
-    ul.appendChild(li);
-  });
+  for(let i of gettingData){
+    let liElement = document.createElement("li");
+    liElement.innerHTML = `${i.topic}, ${formatDate(userId, i.date)}`
+    ulAgendas.appendChild(liElement);
+  }
 
+}
+
+
+function formatDate(userId, date){
+  let dateArr = date.split("-"); // for example "2025-02-01"  ---> ["2025", "02", "01"]
+  let day = (dateArr[2] == "01" || dateArr[2] == "21" || dateArr[2] == "31") 
+  ? `${dateArr[2]}st`
+  : (dateArr[2] == "02" || dateArr[2] == "22") 
+  ? `${dateArr[2]}nd`
+  : (dateArr[2] == "03" || dateArr[2] == "23") 
+  ? `${dateArr[2]}rd`
+  : `${dateArr[2]}th`; // fixing st nd rd th for days
+
+  let month = (dateArr[1] == "01") ? "January" : (dateArr[1] == "02") ? "February" : (dateArr[1] == "03") ? "March"
+  : (dateArr[1] == "04") ? "April" : (dateArr[1] == "05") ? "May" : (dateArr[1] == "06") ? "June" : (dateArr[1] == "07") ? "July"
+  : (dateArr[1] == "08") ? "August" : (dateArr[1] == "09") ? "September" : (dateArr[1] == "10") ? "October"
+  : (dateArr[1] == "11") ? "November" : "December";  // months names
+
+  let year = dateArr[0];
+  if(userId == 3){ // if user 3 selected then we show date as months till future date
+    let today = new Date();
+    let currentYear = today.getFullYear(); // current year
+    let currentMonth = today.getMonth() + 1;  // Add 1 to get the month as 1-based index
+    let futureMonth = Number(dateArr[1]); // future month
+    let futureYear = Number(dateArr[0]); // future year
+
+    let monthsDifference = (futureYear - currentYear) * 12 + (futureMonth - currentMonth); // calculating months
+
+    return `${monthsDifference} months in the future (the same day of the month as today)`;
+  }
+  else{
+    const formattedDate = `${day} ${month} ${year}`; // otherwise shows normal date if user is not user 3
+    return formattedDate;
+  }
+  
 }
 
 window.onload = function () {
