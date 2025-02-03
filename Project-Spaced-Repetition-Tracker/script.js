@@ -65,6 +65,38 @@ function displayAgenda(userId) {
 
 }
 
+
+function formatDate(userId, date){
+  let dateArr = date.split("-");
+  let day = (dateArr[2] == "01" || dateArr[2] == "21" || dateArr[2] == "31") 
+  ? `${dateArr[2]}st`
+  : (dateArr[2] == "02" || dateArr[2] == "22") 
+  ? `${dateArr[2]}nd`
+  : (dateArr[2] == "03" || dateArr[2] == "23") 
+  ? `${dateArr[2]}rd`
+  : `${dateArr[2]}th`;
+
+  let month = (dateArr[1] == "01") ? "January" : (dateArr[1] == "02") ? "February" : (dateArr[1] == "03") ? "March"
+  : (dateArr[1] == "04") ? "April" : (dateArr[1] == "05") ? "May" : (dateArr[1] == "06") ? "June" : (dateArr[1] == "07") ? "July"
+  : (dateArr[1] == "08") ? "August" : (dateArr[1] == "09") ? "September" : (dateArr[1] == "10") ? "October"
+  : (dateArr[1] == "11") ? "November" : "December"; 
+
+  let year = dateArr[0];
+  if(userId == 3){
+    let today = new Date();
+    let currentMonth = today.getMonth() + 1;  // Add 1 to get the month as 1-based index
+    let futureMonth = Number(dateArr[1]);
+    let result = futureMonth - currentMonth;
+
+    return `${result} months in the future (the same day of the month as today)`;
+  }
+  else{
+    const formattedDate = `${day} ${month} ${year}`;
+    return formattedDate;
+  }
+  
+}
+
 window.onload = function () {
   createDropDown(users);
   // document.querySelector("#user").innerText = `There are ${users.length} users`;
