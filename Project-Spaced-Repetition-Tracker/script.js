@@ -23,7 +23,23 @@ function createDropDown(users) {
   }
 }
 
+function formData(userId){
+  
+  let formTopic = document.querySelector("#topic-form");
+  let dateForm = document.querySelector("#date-form");
+  let buttonForm = document.querySelector("#form-button");
+  
+  buttonForm.onclick = function(event) { // Overwrites previous event listener
+    let dataForm = {
+        topic: formTopic.value,
+        date: dateForm.value
+    };
+    console.log(dataForm);
 
+    addData(userId, dataForm);
+};
+
+}
 
 function displayAgendas(userId, gettingData1) {
   let ulAgendas = document.querySelector("#agenda");
