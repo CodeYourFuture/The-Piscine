@@ -34,7 +34,7 @@ function createDropDown(users) {
   })
 }
 
-function formData(userId){
+function formData(userId){ // getting data from form and add them to local storage
   
   let formTopic = document.querySelector("#topic-form");
   let dateForm = document.querySelector("#date-form");
@@ -80,22 +80,22 @@ function displayAgendas(userId, gettingData1) {
 
 
 function formatDate(userId, date){
-  let dateArr = date.split("-");
+  let dateArr = date.split("-"); // for example "2025-02-01"  ---> ["2025", "02", "01"]
   let day = (dateArr[2] == "01" || dateArr[2] == "21" || dateArr[2] == "31") 
   ? `${dateArr[2]}st`
   : (dateArr[2] == "02" || dateArr[2] == "22") 
   ? `${dateArr[2]}nd`
   : (dateArr[2] == "03" || dateArr[2] == "23") 
   ? `${dateArr[2]}rd`
-  : `${dateArr[2]}th`;
+  : `${dateArr[2]}th`; // fixing st nd rd th for days
 
   let month = (dateArr[1] == "01") ? "January" : (dateArr[1] == "02") ? "February" : (dateArr[1] == "03") ? "March"
   : (dateArr[1] == "04") ? "April" : (dateArr[1] == "05") ? "May" : (dateArr[1] == "06") ? "June" : (dateArr[1] == "07") ? "July"
   : (dateArr[1] == "08") ? "August" : (dateArr[1] == "09") ? "September" : (dateArr[1] == "10") ? "October"
-  : (dateArr[1] == "11") ? "November" : "December"; 
+  : (dateArr[1] == "11") ? "November" : "December";  // months names
 
   let year = dateArr[0];
-  if(userId == 3){
+  if(userId == 3){ // if user 3 selected then we show date as months till future date
     let today = new Date();
     let currentYear = today.getFullYear(); // current year
     let currentMonth = today.getMonth() + 1;  // Add 1 to get the month as 1-based index
