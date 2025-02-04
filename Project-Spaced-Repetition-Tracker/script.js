@@ -7,3 +7,16 @@
 import { getUserIds } from "./storage.js";
 
 
+
+const userSelect = document.createElement("select");
+const userIds = getUserIds();
+console.log(userIds);
+
+userIds.forEach(item => {
+  const option = document.createElement("option");
+  option.value = item;
+  option.textContent = `user ${item}`;
+  userSelect.appendChild(option);
+});
+
+document.body.appendChild(userSelect);
