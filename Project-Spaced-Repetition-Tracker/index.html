@@ -1,36 +1,40 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spaced Repetition Tracker</title>
-    <link rel="stylesheet" href="style.css">
-    <script defer type="module" src="script.js"></script>
-</head>
-<body>
+  <html>
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Spaced Repetition Tracker</title>
+      <link rel="stylesheet" href="style.css">
+      <script defer type="module" src="script.js"></script>
+    </head>
+    <body>
     <h1 class="title">Spaced Repetition Tracker</h1>
 
-    <div class="container">
+      <div class="container">
         <label for="user-select">Select User:</label>
         <select id="user-select">
-            <!-- Options will be added by JavaScript -->
+            <!-- User options will appear  here -->
         </select>
-        <button id="clear-btn">Clear User Data</button>
-    </div>
+      </div>
 
-    <div id="agenda">
-        <!-- Agenda items will appear here -->
-    </div>
+      <div id="agenda">
+        <!-- User's agenda will be shown here -->
+      </div>
 
     <h2>Add New Topic</h2>
-    <form id="topic-form">
-        <label for="topic-name">Topic Name:</label>
-        <input type="text" id="topic-name" required>
-        
-        <label for="topic-date">Start Date:</label>
-        <input type="date" id="topic-date" required>
-        
-        <button type="submit">Add Topic</button>
-    </form>
-</body>
-</html>
+      <form id="topic-form">
+          <label for="topic-name">Topic Name:</label>
+          <input type="text" id="topic-name" required>
+
+          <label for="topic-date">Start Date:</label>
+          <input type="date" id="topic-date" required>
+
+          <button type="submit">Add Topic</button>
+      </form>   
+    </body>
+  </html>
+
+
+
+ 
+
