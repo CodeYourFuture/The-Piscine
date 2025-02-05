@@ -4,16 +4,36 @@
 // Note that when running locally, in order to open a web page which uses modules, you must serve the directory over HTTP e.g. with https://www.npmjs.com/package/http-server
 // You can't open the index.html file using a file:// URL.
 
-import { getUserIds } from "./storage.js";
-import { getData } from "./storage.js";
-import { addData } from "./storage.js";
-import { clearData } from "./storage.js";
+import { getUserIds, getData, addData, clearData} from "./storage.js";
+
 
 let formInput = document.querySelector("#form-input");
-formInput.style.display = "none"; // Hide form
+
+
+function hideForm() {
+  let formInput = document.querySelector("#form-input");
+  if (formInput) {
+    formInput.style.display = "none"; // Hide form
+  }
+}
+
+function setTodayDate() {
+  const dateInput = document.querySelector("#date-form");
+  if (dateInput) {
+    // Get today's date in the format YYYY-MM-DD
+    const today = new Date();
+    const todayFormatted = today.toISOString().split('T')[0]; // Formats as "YYYY-MM-DD"
+    
+    // Set the value of the date picker to today's date
+    dateInput.value = todayFormatted;
+  }
+}
+
 
 //creating the dropdown for 5 users
 const users = getUserIds();
+
+
 function createDropDown(users) {
   let dropdownSelect = document.querySelector("#dropdown");
   for (let i = 0; i < users.length; i++) {
@@ -115,6 +135,10 @@ function formatDate(userId, date){
 
 window.onload = function () {
   createDropDown(users);
-  // document.querySelector("#user").innerText = `There are ${users.length} users`;
+  hideForm();
+  setTodayDate();
   console.log(getData(users[1]));
 };
+
+
+export {createDropDown, hideForm,setTodayDate}
