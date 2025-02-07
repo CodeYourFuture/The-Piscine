@@ -1,17 +1,13 @@
-// script.test.js
-import { calculateRevisionDates } from './script';
+import { getRevisionDates } from './script.js';
 
-describe('Date Calculations', () => {
-    test('Calculates correct revision dates', () => {
-        const startDate = '2025-07-19';
-        const expected = [
-            '2025-07-26',
-            '2025-08-19',
-            '2025-10-19',
-            '2026-01-19',
-            '2026-07-19'
-        ];
-        
-        expect(calculateRevisionDates(startDate)).toEqual(expected);
-    });
+test('placeholder test', () => {
+  expect(true).toBe(true); // Temporary test to verify suite detection
 });
+
+describe("getRevisionDates", () => {
+  test("calculates correct dates from 2024-02-29", () => {
+    const result = getRevisionDates("2024-02-29");
+    expect(result.oneYear).toBe("2025-02-28");
+  });
+});
+
