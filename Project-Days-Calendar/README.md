@@ -6,7 +6,7 @@ For example, Ada Lovelace Day happens on the second Tuesday every October.
 
 The _date_ that it occurs is different every year. But it has a fixed pattern.
 
-We have supplied a JSON file ([`data.json`](./data.json)) which contains descriptions of several of these days.
+We have supplied a JSON file ([`days.json`](./days.json)) which contains descriptions of several of these days.
 
 The goal of this project is to present this data usefully to users.
 
