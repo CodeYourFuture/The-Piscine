@@ -50,7 +50,7 @@ Your GitHub repository must contain unit tests which demonstrate that your code 
 
 All of the below requirements must be met for the project to be considered complete:
 
-- The website must contain a drop-down which lists two users
+- The website must contain a drop-down which lists five users
 - Selecting a user must display the list of bookmarks for the relevant user
 - If there are no bookmarks for the selected user, a message is displayed to explain this
 - The list of bookmarks must be shown in reverse chronological order
