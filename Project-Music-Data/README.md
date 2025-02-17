@@ -66,6 +66,19 @@ Bonus points (which don't mean anything):
 * End-to-end tests.
 
 Expected output data:
+| Question                     | User 1                                                   | User 2                                                   | User 3                                                                                                               |
+| ---------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Most listened song (count)   | The Swell Season - When Your Mind's Made Up              | Frank Turner - I Still Believe                           | Frank Turner - Be More Kind                                                                                          |
+| Most listened song (time)    | Faithless - Insomnia                                     | Frank Turner - I Still Believe                           | Faithless - Insomnia                                                                                                 |
+| Most listened artist (count) | Frank Turner                                             | Frank Turner                                             | Frank Turner                                                                                                         |
+| Most listened artist (time)  | Frank Turner                                             | Frank Turner                                             | Frank Turner                                                                                                         |
+| Friday night song (count)    | The Swell Season - When Your Mind's Made Up              | Frank Turner - I Still Believe                           | <no Friday listens - must not be displayed>                                                                          |
+| Friday night song (time)     | The Swell Season - When Your Mind's Made Up              | Frank Turner - Photosynthesis                            | <no Friday listens - must not be displayed>                                                                          |
+| Longest streak song          | The King Blues - I Got Love (length: 34)                 | Frank Turner - I Still Believe (length: 44)              | Two values with length 42 (can show either or both): The Divine Comedy - Tonight We Fly, Frank Turner - Be More Kind |
+| Every day songs              | <no songs listened to every day - must not be displayed> | <no songs listened to every day - must not be displayed> | <no songs listened to every day - must not be displayed>                                                             |
+| Top three genres             | Pop, Folk, Punk                                          | Pop (Must not say 'top 3 genres' as there are not 3)     | Pop, Folk, House                                                                                                     |
+
+Due to a bug in the original README of this project, we will also accept the following answer:
 | Question                     | User 1                                      | User 2                                                            | User 3                                                                                                               |
 | ---------------------------- | ------------------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | Most listened song (count)   | The Swell Season - When Your Mind's Made Up | Frank Turner - I Still Believe                                    | Frank Turner - Be More Kind                                                                                          |
