@@ -60,8 +60,8 @@ Some examples of correct Basic English:
 
 - `he go to the island`
 - `they make a fire`
-- `he is married, she is not`
-- `fire is red-orange`
+- `he will get married, she will not`
+- `red-orange fire`
 - `I love Glasgow`
 
 Some examples of incorrect Basic English:
@@ -70,4 +70,4 @@ Some examples of incorrect Basic English:
 - `they create some dinner`
 - `she give gift, then go out`
 - `he like egg-nog`
-- `where is birmingham`
+- `go to birmingham`
