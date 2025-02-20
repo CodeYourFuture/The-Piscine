@@ -1,8 +1,40 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-  </body>
+<html lang="en">
+<head>
+  <script type="module" src="script.js"></script>
+  <title>Project Shared Bookmark</title>
+</head>
+<body>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: auto; }
+    form { margin-bottom: 20px; }
+    input, textarea, button { width: 97%; margin: 5px 0; padding: 8px; }
+    .bookmark { border-bottom: 1px solid #ccc; padding: 10px 0; }
+    table { width: 100%; border-collapse: collapse; margin: 20px 0; text-align: left; }
+    th, td { border: 1px solid #ddd; padding: 10px; }
+    th { background-color: #f4f4f4; }
+    tr:nth-child(even) { background-color: #f9f9f9; }
+  </style>
+  <h2>PROJECT SHARED BOOKMARKS</h2>
+  <label for="select-user">Choose an user:</label>
+  <select id="select-user"></select>
+  <table>
+    <thead>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Timestamp</th>
+    </thead>
+    <tbody id="table-body"></tbody>
+  </table>
+  <form id="form-bookmark" style="margin-top:20px;">
+    <fieldset>
+      <legend>ADD BOOKMARK</legend>
+      <input type="text" id="title" placeholder="Title" name="title" required>
+      <input type="text" id="url" placeholder="URL" name="url" required>
+      <textarea type="text" id="description" placeholder="Description" name="description" style="height:100px;"
+        required></textarea>
+      <button id="btn-submit" type="submit">SUBMIT</button>
+    </fieldset>
+  </form>
+</body>
 </html>

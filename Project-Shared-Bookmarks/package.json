@@ -1,0 +1,20 @@
+{
+  "name": "shared-bookmarks-test",
+  "description": "to perform a unit test for a non-trivial function",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jsdom": "^26.0.0"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.26.9",
+    "babel-jest": "^29.7.0",
+    "ts-jest": "^29.2.5"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
+  }
+}
