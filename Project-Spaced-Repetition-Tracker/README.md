@@ -14,7 +14,6 @@ Note that when running locally, in order to open a web page which uses modules, 
 
 We have also provided a `storage.js` file, which contains four functions to help with data storage. `storage.js` is a file containing four functions:
 
-- `getUserIds()`: when called, returns an array of strings, each of which is a user id
 - `getData(userId)`: when called with a user id string as an argument, returns an array of objects, each of which represents an agenda item for the user
 - `addData(userId, data)`: when called with a user id string and an array of objects as arguments, it will append the agenda items data to the user's stored agenda. Each of the objects should contain information about the agenda item, such as the date and topic that should be revised on that date. The function does not return anything
 - `clearData(userId)`: when called with a user id string as an argument, it will clear any stored data associated with the user id. This is provided to help with development, and is not required in the final code
@@ -50,6 +49,7 @@ Your GitHub repository must contain unit tests which demonstrate that your code 
 All of the below requirements must be met for the project to be considered complete:
 
 - The website must contain a drop-down which lists exactly 5 users
+- All of the users must have no agenda when starting from a "clean state" with no stored data
 - Selecting a user must display the agenda for the relevant user (see manual testing below)
 - If there is no agenda for the selected user, a message is displayed to explain this
 - The website must contain a form with inputs for a topic name and a date picker. The form should also have a submit button.
@@ -67,14 +67,14 @@ Where an instruction says `${YEAR}`, use that year. Where an instruction says `$
 
 Steps:
 
-1. Select User 1 from the drop-down
+1. Select user 1 from the drop-down
 1. Add “Functions in JS” to the text input
 1. Select the date 19th July ${YEAR} from the date picker
 1. Submit the form
 
 Expected result:
 
-- The agenda for User 1 is shown, with the revision dates shown as follows:
+- The agenda for user 1 is shown, with the revision dates shown as follows:
   - Functions in JS, 26th July ${YEAR}
   - Functions in JS, 19th August ${YEAR}
   - Functions in JS, 19th October ${YEAR}
@@ -85,7 +85,7 @@ Expected result:
 
 Steps:
 
-1. Select User 2 from the drop-down
+1. Select user 2 from the drop-down
 1. Add “Variables in Python” to the text input
 1. Select the date 5th November ${YEAR} from the date picker
 1. Submit the form
@@ -95,7 +95,7 @@ Steps:
 
 Expected result:
 
-- The agenda for User 2 is shown, with the revision dates shown as follows:
+- The agenda for user 2 is shown, with the revision dates shown as follows:
   - Functions in Python, 12th October ${YEAR}
   - Functions in Python, 5th November ${YEAR}
   - Variables in Python, 12th November ${YEAR}
@@ -118,7 +118,7 @@ Steps:
 
 Expected result:
 
-- The agenda for User 3 is shown, with the revision dates shown as follows:
+- The agenda for user 3 is shown, with the revision dates shown as follows:
   - (No topic is shown for 1 week after the selected date, as this is in the past)
   - Codewars, Today's date (1 month from the selected date)
   - Codewars, Two months in the future, on the same date of the month as today (3 months from the selected date)
