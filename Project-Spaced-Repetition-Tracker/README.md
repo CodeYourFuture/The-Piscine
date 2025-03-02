@@ -119,10 +119,11 @@ Steps:
 Expected result:
 
 - The agenda for User 3 is shown, with the revision dates shown as follows:
-  - Codewars, Today's date
-  - Codewars, Two months in the future (the same day of the month as today)
-  - Codewars, 5 months in the future (the same day of the month as today)
-  - Codewars, 11 months in the future (the same day of the month as today)
+  - (No topic is shown for 1 week after the selected date, as this is in the past)
+  - Codewars, Today's date (1 month from the selected date)
+  - Codewars, Two months in the future, on the same date of the month as today (3 months from the selected date)
+  - Codewars, 5 months in the future, on the same day of the month as today (6 months from the selected date)
+  - Codewars, 11 months in the future, on the same day of the month as today (1 year from the selected date)
 - Each of the revision dates show the topic name and the relevant date (styling/formatting does not matter as long as it is understandable)
 - The form remains on the website (allowing for further topics to be added)
 
