@@ -53,6 +53,7 @@ Your GitHub repository must contain unit tests which demonstrate that your code 
 All of the below requirements must be met for the project to be considered complete:
 
 - The website must contain a drop-down which lists exactly 5 users
+- No user is selected on page load
 - All of the users must have no agenda when starting from a "clean state" with no stored data
 - Selecting a user must load the relevant user's agenda from storage
 - Selecting a user must display the agenda for the relevant user (see manual testing below)
