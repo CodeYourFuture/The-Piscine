@@ -33,7 +33,7 @@ Your website must include a drop-down to select a user to display information fo
 
 You **must not** implement any kind of authentication. Just a drop-down to choose which user’s information to display. You **must not** implement data storage yourself, as we have provided that for you.
 
-After picking a user, your website should display the list of topics to revise in chronological order. For each revision date, it should display the date and the name of the topic to revise. Revision dates in the past should not be displayed.
+After picking a user, the user's goal is to understand which topic they should revise next. To do this, your website should display the list of topics to revise in _chronological order_. For each revision date, it should display the date and the name of the topic to revise. Revision dates in the past should not be displayed.
 
 Your website must include a form with a text input, a date picker and submit button that allows a user to add a new topic. This form must be accessible, so for example, hitting the Enter key will also submit the topic name, the same as clicking the submit button.
 
