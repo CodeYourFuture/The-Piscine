@@ -38,7 +38,7 @@ When a user is selected, you must get the stored data for that user and use it t
 
 If there is an agenda, your website should display a list of topics and the revision date when the user should revise in _chronological order_. For each revision date, it should display the date and the name of the topic to revise. Revision dates in the past should not be displayed.
 
-Your website must include a form with a text input, a date picker and submit button that allows a user to add a new topic. This form must be accessible, so for example, hitting the Enter key will also submit the topic name, the same as clicking the submit button.
+Your website must include a form with a text input, a date picker and submit button that allows a user to add a new topic. This form must be accessible, so for example, hitting the Enter key will also submit the topic name, the same as clicking the submit button. The form should validate that the topic name and date have be set by the user.
 
 The date picker should default to today’s date, but allow selection of another date. You should use the built-in date picker for browsers, unless attempted as a bonus task. **No credit** is given for using an alternative date picker.
 
@@ -59,6 +59,7 @@ All of the below requirements must be met for the project to be considered compl
 - If there is no agenda for the selected user, a message is displayed to explain this
 - The website must contain a form with inputs for a topic name and a date picker. The form should also have a submit button.
 - The date picker must default to today’s date on first page load
+- The form has validation to ensure that both the topic name and and selected date have been set by the user
 - Submitting the form adds a new topic to revise for the relevant user only. The topic’s dates to revise are calculated as one week, one month, three months, six months and one year from the selected date (see manual testing below)
 - After creating a new topic to revise, the agenda for the current user is shown, including the new topic
 - The website must score 100 for accessibility in Lighthouse
