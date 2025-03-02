@@ -2,7 +2,7 @@
 
 At Code Your Future, we like to use a learning technique called spaced repetition. The technique involves reviewing a topic over increasing time gaps (e.g. after one week, one month, three months, six months, one year).
 
-One of the difficulties of this approach is tracking which topic should be revised at what time. Your task is to write code which allows a user to track topics and show when they should revise these topics.
+One of the difficulties of this approach is tracking which topic should be revised at what time. Your task is to write code which allows a user to track topics and then understand which topic they should revise next.
 
 You should make a frontend, which displays an agenda of topics to revise on specific dates. You should use **HTML and JavaScript only**. You should **not** use CSS. We want to focus on your ability to create the correct logic and not spend time on creating the perfect UI.
 
@@ -28,17 +28,21 @@ You must submit both a link to your GitHub repo, and a link to the deployed webs
 
 Your website must be hosted on the internet, and must be automatically deployed when you merge changes to your GitHub repo.
 
-Your website must include a drop-down to select a user to display information for. When a user is selected, you must display the agenda for that user. If there is no agenda for the user, you should present a message explaining this.
+Your website must include a drop-down to select a user to display information for.
 
-You **must not** implement any kind of authentication. Just a drop-down to choose which user’s information to display. You **must not** implement data storage yourself, as we have provided that for you.
+You **must not** implement any kind of authentication. Just a drop-down to choose which user’s information to display. You **must not** implement data storage yourself, as we have provided that for you. (We want to avoid you "wasting" time implementing these, instead of building the project!)
 
-After picking a user, the user's goal is to understand which topic they should revise next. To do this, your website should display the list of topics to revise in _chronological order_. For each revision date, it should display the date and the name of the topic to revise. Revision dates in the past should not be displayed.
+The goal of your website to is allow users to understand which topic they should revise next.
+
+When a user is selected, you must get the stored data for that user and use it to display their agenda. If there is no agenda for the user, you should present a message explaining this.
+
+If there is an agenda, your website should display a list of topics and the revision date when the user should revise in _chronological order_. For each revision date, it should display the date and the name of the topic to revise. Revision dates in the past should not be displayed.
 
 Your website must include a form with a text input, a date picker and submit button that allows a user to add a new topic. This form must be accessible, so for example, hitting the Enter key will also submit the topic name, the same as clicking the submit button.
 
 The date picker should default to today’s date, but allow selection of another date. You should use the built-in date picker for browsers, unless attempted as a bonus task. **No credit** is given for using an alternative date picker.
 
-When the form is submitted, your website should calculate the date to revise for one week, one month, three months, six months and one year from the selected date. Using these calculations, your website should store the topic name and any necessary revision date data using the functions from `storage.js` as described above.
+When the form is submitted, your website should calculate the revision dates for that topic. There should be a revision date one week, one month, three months, six months and one year from the selected date. Using these calculations, your website should store the topic name and any necessary revision date data using the functions from `storage.js` as described above.
 
 After the new data has been stored, the updated agenda must be displayed (including the new topic) for the relevant user.
 
@@ -50,6 +54,7 @@ All of the below requirements must be met for the project to be considered compl
 
 - The website must contain a drop-down which lists exactly 5 users
 - All of the users must have no agenda when starting from a "clean state" with no stored data
+- Selecting a user must load the relevant user's agenda from storage
 - Selecting a user must display the agenda for the relevant user (see manual testing below)
 - If there is no agenda for the selected user, a message is displayed to explain this
 - The website must contain a form with inputs for a topic name and a date picker. The form should also have a submit button.
