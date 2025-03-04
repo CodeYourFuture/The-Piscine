@@ -3,15 +3,6 @@
 // You should not need to modify it to complete the project.
 
 /**
- * Get a list of user ids
- *
- * @returns {string[]} List of user id strings
- */
-export function getUserIds() {
-  return ["1", "2", "3", "4", "5"];
-}
-
-/**
  * Get data associated with a specific user.
  *
  * @param {string} userId The user id to get data for
