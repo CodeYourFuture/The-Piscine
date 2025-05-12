@@ -46,6 +46,8 @@ After the new data has been stored, the updated list of bookmarks must be displa
 
 Your GitHub repository must contain unit tests which demonstrate that your code works. End to end tests are optional.
 
+Every view of your website must be accessible (i.e. for each user, whether or not they have bookmarks, etc). We will test this by making sure that "Snapshot" mode of Lighthouse gives 100% accessibility for any view we look at.
+
 ## Rubric
 
 All of the below requirements must be met for the project to be considered complete:
