@@ -32,7 +32,9 @@ A hyphen (`-`) can join two words, which should be treated as separate. For exam
 
 Words that begin with capital letters, such as proper nouns and names, should always be treated as "correct" words and so should _not_ be highlighted. For example, "Ali" or "London" would not be highlighted, despite not being in the Basic English dictionary.
 
-Your GitHub repository must contain unit tests which demonstrate that your code works. End to end tests are optional.
+Your GitHub repository must contain at least one unit test which demonstrates that your code works. End to end tests are optional. Testing via the DOM is optional.
+
+Every view of your website must be accessible (i.e. before entering text, after checking spelling, etc). We will test this by making sure that "Snapshot" mode of Lighthouse gives 100% accessibility for any view we look at.
 
 ## Supplied scaffolding
 
@@ -49,7 +51,7 @@ All of the below requirements must be met for the project to be considered compl
 - When triggered, the spell check should check every word in the input to see if it exists in the Basic English dictionary
 - If a word does not exist in the dictionary, then it should be highlighted below the input as a spelling mistake
 - It should be obvious to the user that there is a spelling mistake, both with visuals and some explanatory text
-- If a word does not exist in the dictionary, then a mechanism should exist to add the word to the dictionary. Adding the word to the dictionary should re-trigger the spell check and the newly added word should no longer be highlighted
+- If a word does not exist in the dictionary, then a mechanism should exist to add the word to the dictionary. Adding the word to the dictionary should re-trigger the spell check and the newly added word should no longer be highlighted. If more than one word does not exist in the dictionary, they should be able to be added separately one at a time
 - "Correct" words (i.e. those found in the Basic English dictionary) that are adjacent to punctuation (which is defined as the following characters: `,.?!":;`) should not be marked as spelling mistakes
 - "Incorrect" words (i.e. those not found in the Basic English dictionary) that are adjacent to punctuation characters should still be marked as spelling mistakes
 - Words joined by hyphen should be treated separately, so if one or both of the words are "incorrect" (i.e. those not found in the Basic English dictionary) then it should be marked as a spelling mistake

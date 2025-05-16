@@ -29,7 +29,9 @@ Your website must include a drop-down to select a user to display information fo
 
 You **must not** implement any kind of authentication. Just a drop-down to choose which user's information to display.
 
-Your GitHub repository must contain unit tests which demonstrate that your code works. End to end tests are optional.
+Your GitHub repository must contain at least one unit test which demonstrates that your code works. End to end tests are optional. Testing via the DOM is optional.
+
+Every view of your website must be accessible. We will test this by making sure that "Snapshot" mode of Lighthouse gives 100% accessibility for any view we look at.
 
 ## Questions to answer
 
@@ -38,7 +40,7 @@ Your GitHub repository must contain unit tests which demonstrate that your code 
 3. What was the user's most often listened to song on Friday nights (between 5pm and 4am)?
 4. What are the answers to the above questions if using _listening time_ rather than _number of listens_?
 5. What song did the user listen to the most times in a row (i.e. without any other song being listened to in between)? How many times was it listened to?
-6. Are there any songs that the user listened to every day between the first day that user listened to any songs and the last day that user listened to any songs? If the answer is yes, you should show which one(s). If the answer is no, you should not show anything about this question.
+6. Are there any songs that, on each day the user listened to music, they listened to every day? If the answer is yes, you should show which one(s). If the answer is no, you should not show anything about this question.
 7. What were the user's top three genres to listen to by number of listens?
 
 ## Supplied scaffolding
@@ -58,7 +60,7 @@ All of the below requirements must be met for the project to be considered compl
   * If a question doesn't apply (e.g. if no songs were ever listened to on a Friday night), the interface should completely hide the question and answer. Displaying the question and an empty result, or any kind of error, is not acceptable.
   * If fewer than three (but more than zero) genres were listened to the site should list the top genres listened to. It must not display text like "Top 3 genres", but may say "Top genres" or "Top 2 genres" or similar.
 * Unit tests must be written for at least one non-trivial function.
-* The HTML is valid.
+* The website must score 100 for accessibility in Lighthouse
 
 Bonus points (which don't mean anything):
 
@@ -66,19 +68,6 @@ Bonus points (which don't mean anything):
 * End-to-end tests.
 
 Expected output data:
-| Question                     | User 1                                                   | User 2                                                   | User 3                                                                                                               |
-| ---------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Most listened song (count)   | The Swell Season - When Your Mind's Made Up              | Frank Turner - I Still Believe                           | Frank Turner - Be More Kind                                                                                          |
-| Most listened song (time)    | Faithless - Insomnia                                     | Frank Turner - I Still Believe                           | Faithless - Insomnia                                                                                                 |
-| Most listened artist (count) | Frank Turner                                             | Frank Turner                                             | Frank Turner                                                                                                         |
-| Most listened artist (time)  | Frank Turner                                             | Frank Turner                                             | Frank Turner                                                                                                         |
-| Friday night song (count)    | The Swell Season - When Your Mind's Made Up              | Frank Turner - I Still Believe                           | <no Friday listens - must not be displayed>                                                                          |
-| Friday night song (time)     | The Swell Season - When Your Mind's Made Up              | Frank Turner - Photosynthesis                            | <no Friday listens - must not be displayed>                                                                          |
-| Longest streak song          | The King Blues - I Got Love (length: 34)                 | Frank Turner - I Still Believe (length: 44)              | Two values with length 42 (can show either or both): The Divine Comedy - Tonight We Fly, Frank Turner - Be More Kind |
-| Every day songs              | <no songs listened to every day - must not be displayed> | <no songs listened to every day - must not be displayed> | <no songs listened to every day - must not be displayed>                                                             |
-| Top three genres             | Pop, Folk, Punk                                          | Pop (Must not say 'top 3 genres' as there are not 3)     | Pop, Folk, House                                                                                                     |
-
-Due to a bug in the original README of this project, we will also accept the following answer:
 | Question                     | User 1                                      | User 2                                                            | User 3                                                                                                               |
 | ---------------------------- | ------------------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | Most listened song (count)   | The Swell Season - When Your Mind's Made Up | Frank Turner - I Still Believe                                    | Frank Turner - Be More Kind                                                                                          |

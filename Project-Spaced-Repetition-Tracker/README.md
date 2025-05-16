@@ -46,7 +46,17 @@ When the form is submitted, your website should calculate the revision dates for
 
 After the new data has been stored, the updated agenda must be displayed (including the new topic) for the relevant user.
 
-Your GitHub repository must contain unit tests which demonstrate that your code works. End to end tests are optional.
+Your GitHub repository must contain at least one unit test which demonstrates that your code works. End to end tests are optional. Testing via the DOM is optional.
+
+Every view of your website must be accessible (i.e. for each user, with any number of topics, etc). We will test this by making sure that "Snapshot" mode of Lighthouse gives 100% accessibility for any view we look at.
+
+> [!WARN]
+>
+> Date calculations can be complicated. Daylight savings time in particular can cause problems.
+>
+> Make sure your date calculations work as you expect, even if adding an interval means that a date crosses a daylight savings boundary.
+>
+> A tip here is to either only be adding dates and not times, or to make sure all dates are in UTC.
 
 ## Rubric
 
@@ -127,10 +137,10 @@ Expected result:
 
 - The agenda for user 3 is shown, with the revision dates shown as follows:
   - (No topic is shown for 1 week after the selected date, as this is in the past)
-  - Codewars, Today's date (1 month from the selected date)
-  - Codewars, Two months in the future, on the same date of the month as today (3 months from the selected date)
-  - Codewars, 5 months in the future, on the same day of the month as today (6 months from the selected date)
-  - Codewars, 11 months in the future, on the same day of the month as today (1 year from the selected date)
+  - Codewars, Today's date (e.g. if it's currently July 26th, shows: July 26th)
+  - Codewars, Two months in the future (e.g. if it's currently July 26th, shows: September 26th)
+  - Codewars, 5 months in the future (e.g. if it's currently July 26th, shows: December 26th)
+  - Codewars, 11 months in the future, (e.g. if it's currently July 26th, shows: June 26th)
 - Each of the revision dates show the topic name and the relevant date (styling/formatting does not matter as long as it is understandable)
 - The form remains on the website (allowing for further topics to be added)
 
