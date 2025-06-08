@@ -12,7 +12,7 @@ We have supplied a few sample files in the repo to demonstrate how you can defin
 
 Note that when running locally, in order to open a web page which uses modules, you must serve the directory over HTTP e.g. with https://www.npmjs.com/package/http-server - you can't open the `index.html` file using a `file://` URL.
 
-We have also provided a `storage.js` file, which contains four functions to help with data storage. `storage.js` is a file containing four functions:
+We have also provided a `storage.js` file, which contains three functions to help with data storage. `storage.js` is a file containing three functions:
 
 - `getData(userId)`: when called with a user id string as an argument, returns an array of objects, each of which represents an agenda item for the user
 - `addData(userId, data)`: when called with a user id string and an array of objects as arguments, it will append the agenda items data to the user's stored agenda. Each of the objects should contain information about the agenda item, such as the date and topic that should be revised on that date. The function does not return anything
