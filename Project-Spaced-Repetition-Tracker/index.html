@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Agenda Form</title>
+    <meta charset="UTF-8">
+    <title>Spaced Repetition Tracker App</title>
   </head>
   <body>
+    <h2>Spaced Repetition Tracker App</h2>
+    <br>
+    <label for="dropdown">Select User:</label>
+    <select id="dropdown" name="userDropdown">
+      <option>select a user</option>
+    </select>
     <form id="form">
-      <label for="dropdown">
-        <select id="dropdown" name="userDropdown">
-          <option>select a user</option>
-        </select>
-      </label><br>
       <label for="topicName">Topic:</label>
-      <input type="text" id="topicName" placeholder="Please enter a topic" name="topicName" required><br>
+      <input
+        type="text"
+        id="topicName"
+        placeholder="Please enter a topic"
+        name="topicName"
+        required /><br />
       <label for="startingDate">Starting Date:</label>
-      <input type="date" id="startingDate" name="startingDate" required><br>
-      <input type="submit" value="Submit">
+      <input type="date" id="startingDate" name="startingDate" required /><br />
+      <input type="submit" value="Add Topic" />
     </form>
+    <div id="form-message"></div><br>
     <div id="agendas"></div>
     <script type="module" src="script.mjs"></script>
   </body>
-</html>gi
+</html>
