@@ -5,8 +5,7 @@
 // You can't open the index.html file using a file:// URL.
  
 import { getUserIDs } from "./common.mjs";
-import { addData, getData, clearData } from "./storage.mjs";
-
+import { getSpacedRepetitionDates } from "./dateIntervals.mjs";
 
 let agendaContainer;
 window.onload = function () {
