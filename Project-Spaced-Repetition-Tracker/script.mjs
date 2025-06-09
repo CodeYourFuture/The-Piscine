@@ -25,6 +25,34 @@ window.onload = function () {
     refreshAgendaDisplay(e.target.value)
   })
 
+  //eventlistener to handle the submit of the form
+  userForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const topic = topicInput.value.trim();
+    const date = startingDateInput.value;
+    const selectedUserId = userDropdown.value
+
+    const newEntry = {
+      userId: selectedUserId,
+      topic: topic,
+        date: date
+
+    };
+
+
+    //gets existing data entries and adds new data (data is saved in local storage)
+    const existingData = getData(selectedUserId) || [];
+    existingData.push(newEntry);
+    addData(selectedUserId, existingData)
+
+    //clears input fields after submission
+    topicInput.value = "";
+    startingDateInput.value = "";
+
+    refreshAgendaDisplay(selectedUserId)
+
+  })
 };
 
 // fetches displays data for selected user
