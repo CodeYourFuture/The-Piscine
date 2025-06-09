@@ -5,7 +5,8 @@
 // You can't open the index.html file using a file:// URL.
  
 import { getUserIDs } from "./common.mjs";
-import { addData, getData } from "./storage.mjs";
+import { addData, getData, clearData } from "./storage.mjs";
+
 
 let agendaContainer;
 window.onload = function () {
@@ -40,12 +41,8 @@ window.onload = function () {
 
     };
 
-
-    //gets existing data entries and adds new data (data is saved in local storage)
-    const existingData = getData(selectedUserId) || [];
-    existingData.push(newEntry);
-    addData(selectedUserId, existingData)
-
+    
+    addData(selectedUserId,[newEntry])
     //clears input fields after submission
     topicInput.value = "";
     startingDateInput.value = "";
@@ -85,8 +82,15 @@ function renderAgenda(userData) {
   let agendaList = document.createElement("ol")
   userData.forEach(user => {
     let listItem = document.createElement("li")
-    listItem.textContent = `${user.topic} start date:${user.date}`
+    let topicHeading = document.createElement('h3')
+    topicHeading.textContent = user.topic
 
+    let dateParagraph = document.createElement('p')
+    dateParagraph.textContent = `Starting date : ${user.date}`
+
+    
+    //listItem.textContent = `${user.topic} start date:${user.date}`
+    listItem.append(topicHeading, dateParagraph)
     agendaList.appendChild(listItem)
   });
   
