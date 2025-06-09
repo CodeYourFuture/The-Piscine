@@ -1,0 +1,12 @@
+{
+  "name": "project-spaced-repetition-tracker",
+  "version": "1.0.0",
+  "description": "At Code Your Future, we like to use a learning technique called spaced repetition. The technique involves reviewing a topic over increasing time gaps (e.g. after one week, one month, three months, six months, one year).",
+  "main": "dateIntervals.js",
+  "scripts": {
+    "test": "node dateInterval.test.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
