@@ -38,7 +38,6 @@ window.onload = function () {
       userId: selectedUserId,
       topic: topic,
         date: date
-
     };
 
     
@@ -70,7 +69,6 @@ function populateDropdown(users, userDropdown) {
     
   });
 }
-
 
 //This function displays the agendas for the selected user. This function will run only when a user is selected
 function renderAgenda(userData) {
