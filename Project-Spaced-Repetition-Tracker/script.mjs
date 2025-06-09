@@ -5,7 +5,9 @@
 // You can't open the index.html file using a file:// URL.
 
 import { getUserIDs } from "./common.mjs";
-import { getSpacedRepetitionDates } from "./dateIntervals.mjs";
+import { addData, getData, clearData } from "./storage.mjs";
+import { getSpacedRepetitionDates } from "./dateIntervals.mjs"; // or whatever your file is called
+
 
 let agendaContainer;
 window.onload = function () {
@@ -15,6 +17,7 @@ window.onload = function () {
   const userForm = document.getElementById("form");
   const topicInput = userForm["topicName"];
   const startingDateInput = userForm["startingDate"];
+  startingDateInput.valueAsDate = new Date();
   agendaContainer = document.getElementById("agendas");
 
   //calling function to populate the user dropdown with available users whe page loads
@@ -51,53 +54,9 @@ window.onload = function () {
 // fetches displays data for selected user
 function refreshAgendaDisplay(userId) {
   const userData = getData(userId) || [];
-
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-
-  let expandedData = [];
-
-  userData.forEach(({ topic, date: startDate }) => {
-    const spacedDates = getSpacedRepetitionDates(startDate)
-    .map(dte => new Date(dte))
-    .filter(dte => dte >= today);
-
-    spacedDates.forEach(dte => {
-      expandedData.push({
-        topic, date: dte.toISOString().slice(0, 10)
-      });
-    });
-  });
-
-  expandedData.sort((a, b) => new Date(a.date) - new Date(b.date));
-
   agendaContainer.textContent = "";
-  renderAgenda(expandedData);
-
-}
-function formatDate(dateStr) {
-  const date = new Date(dateStr);
-  const day = date.getDate();
-
-  const daySuffix = (d) => {
-    if (d > 3 && d < 21) return 'th';
-    switch (d % 10) {
-      case 1: return 'st';
-      case 2: return 'nd';
-      case 3: return 'rd';
-      default: return 'th';
-    }
-  };
-
-  const monthNames = [
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-  ];
-
-  const month = monthNames[date.getMonth()];
-  const year = date.getFullYear();
-
-  return `${day}${daySuffix(day)} ${month} ${year}`;
+  renderAgenda(userData);
+  clearFunction();
 }
 
 //populates dropdown with users
@@ -118,12 +77,58 @@ function renderAgenda(userData) {
     return;
   }
 
-  const agendaList = document.createElement("ul");
-  userData.forEach(({ topic, date }) => {
-    const listItem = document.createElement("li");
-    listItem.textContent = `${topic}, ${formatDate(date)}`; // format date here
+  const today = new Date().toISOString().slice(0, 10);
+
+  // Filter to only show future dates
+  const futureAgendas = userData.filter(entry => entry.date >= today);
+
+  if (futureAgendas.length === 0) {
+    agendaContainer.textContent = `No future agendas for this user.`;
+    return;
+  }
+
+  let agendaList = document.createElement("ol");
+  futureAgendas.forEach((entry) => {
+    let listItem = document.createElement("li");
+    let topicHeading = document.createElement("h3");
+    topicHeading.textContent = entry.topic;
+
+    let dateParagraph = document.createElement("p");
+    dateParagraph.textContent = `Start date: ${entry.date}`;
+
+    // Get spaced repetition dates
+    const spacedDates = getSpacedRepetitionDates(entry.date);
+    let spacedList = document.createElement("ul");
+    spacedDates.forEach((d) => {
+      let spacedItem = document.createElement("li");
+      spacedItem.textContent = `Review on: ${d}`;
+      spacedList.appendChild(spacedItem);
+    });
+
+    listItem.append(topicHeading, dateParagraph, spacedList);
     agendaList.appendChild(listItem);
   });
 
   agendaContainer.appendChild(agendaList);
 }
+
+const clearFunction = () => {
+  if (!agendaContainer) return;
+
+  const userDropdown = document.getElementById("dropdown");
+  const selectedUserId = userDropdown.value;
+  const userData = getData(selectedUserId) || [];
+
+  if (userData.length === 0) return;
+
+  const clearBtn = document.createElement("button");
+  clearBtn.textContent = "Clear Data";
+  clearBtn.id = "clearBtn";
+
+  clearBtn.addEventListener("click", () => {
+    clearData(selectedUserId);
+    refreshAgendaDisplay(selectedUserId);
+  });
+
+  agendaContainer.appendChild(clearBtn);
+};
