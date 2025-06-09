@@ -3,7 +3,7 @@
 // You can delete the contents of the file once you have understood how it works.
 // Note that when running locally, in order to open a web page which uses modules, you must serve the directory over HTTP e.g. with https://www.npmjs.com/package/http-server
 // You can't open the index.html file using a file:// URL.
- 
+
 import { getUserIDs } from "./common.mjs";
 import { getSpacedRepetitionDates } from "./dateIntervals.mjs";
 
@@ -11,61 +11,103 @@ let agendaContainer;
 window.onload = function () {
   const users = getUserIDs();
   //document.querySelector("body").innerText = `There are ${users.length} users`;
-  const userDropdown = document.getElementById('dropdown')
-  const userForm = document.getElementById('form')
-  const topicInput = userForm['topicName']
-  const startingDateInput = userForm['startingDate']
-  agendaContainer = document.getElementById("agendas")
+  const userDropdown = document.getElementById("dropdown");
+  const userForm = document.getElementById("form");
+  const topicInput = userForm["topicName"];
+  const startingDateInput = userForm["startingDate"];
+  agendaContainer = document.getElementById("agendas");
 
   //calling function to populate the user dropdown with available users whe page loads
-  populateDropdown(users, userDropdown)
+  populateDropdown(users, userDropdown);
 
   //eventlistener for when a user is selected/changed
-  userDropdown.addEventListener('change', (e) => {
-    refreshAgendaDisplay(e.target.value)
-  })
+  userDropdown.addEventListener("change", (e) => {
+    refreshAgendaDisplay(e.target.value);
+  });
 
   //eventlistener to handle the submit of the form
-  userForm.addEventListener('submit', (e) => {
+  userForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    
+
     const topic = topicInput.value.trim();
     const date = startingDateInput.value;
-    const selectedUserId = userDropdown.value
+    const selectedUserId = userDropdown.value;
 
     const newEntry = {
       userId: selectedUserId,
       topic: topic,
-        date: date
+      date: date,
     };
 
-    
-    addData(selectedUserId,[newEntry])
+    addData(selectedUserId, [newEntry]);
     //clears input fields after submission
     topicInput.value = "";
     startingDateInput.value = "";
 
-    refreshAgendaDisplay(selectedUserId)
-
-  })
+    refreshAgendaDisplay(selectedUserId);
+  });
 };
 
 // fetches displays data for selected user
 function refreshAgendaDisplay(userId) {
   const userData = getData(userId) || [];
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  let expandedData = [];
+
+  userData.forEach(({ topic, date: startDate }) => {
+    const spacedDates = getSpacedRepetitionDates(startDate)
+    .map(dte => new Date(dte))
+    .filter(dte => dte >= today);
+
+    spacedDates.forEach(dte => {
+      expandedData.push({
+        topic, date: dte.toISOString().slice(0, 10)
+      });
+    });
+  });
+
+  expandedData.sort((a, b) => new Date(a.date) - new Date(b.date));
+
   agendaContainer.textContent = "";
-  renderAgenda(userData)
+  renderAgenda(expandedData);
+
+}
+function formatDate(dateStr) {
+  const date = new Date(dateStr);
+  const day = date.getDate();
+
+  const daySuffix = (d) => {
+    if (d > 3 && d < 21) return 'th';
+    switch (d % 10) {
+      case 1: return 'st';
+      case 2: return 'nd';
+      case 3: return 'rd';
+      default: return 'th';
+    }
+  };
+
+  const monthNames = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+
+  const month = monthNames[date.getMonth()];
+  const year = date.getFullYear();
+
+  return `${day}${daySuffix(day)} ${month} ${year}`;
 }
 
 //populates dropdown with users
 function populateDropdown(users, userDropdown) {
   if (!userDropdown) return;
-  users.forEach(userId => {
-    const option = document.createElement('option');
+  users.forEach((userId) => {
+    const option = document.createElement("option");
     option.value = userId;
     option.textContent = `User ${userId}`;
     userDropdown.appendChild(option);
-    
   });
 }
 
@@ -76,23 +118,12 @@ function renderAgenda(userData) {
     return;
   }
 
-  let agendaList = document.createElement("ol")
-  userData.forEach(user => {
-    let listItem = document.createElement("li")
-    let topicHeading = document.createElement('h3')
-    topicHeading.textContent = user.topic
-
-    let dateParagraph = document.createElement('p')
-    dateParagraph.textContent = `Starting date : ${user.date}`
-
-    
-    //listItem.textContent = `${user.topic} start date:${user.date}`
-    listItem.append(topicHeading, dateParagraph)
-    agendaList.appendChild(listItem)
+  const agendaList = document.createElement("ul");
+  userData.forEach(({ topic, date }) => {
+    const listItem = document.createElement("li");
+    listItem.textContent = `${topic}, ${formatDate(date)}`; // format date here
+    agendaList.appendChild(listItem);
   });
-  
-  agendaContainer.appendChild(agendaList)
-  
- 
-}
 
+  agendaContainer.appendChild(agendaList);
+}
