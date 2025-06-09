@@ -5,49 +5,58 @@
 // You can't open the index.html file using a file:// URL.
  
 import { getUserIDs } from "./common.mjs";
-import { addData } from "./storage.mjs";
-import { getData } from "./storage.mjs";
+import { addData, getData } from "./storage.mjs";
 
+let agendaContainer;
 window.onload = function () {
   const users = getUserIDs();
   //document.querySelector("body").innerText = `There are ${users.length} users`;
-  let userDropdown = document.getElementById('dropdown')
+  const userDropdown = document.getElementById('dropdown')
+  const userForm = document.getElementById('form')
+  const topicInput = userForm['topicName']
+  const startingDateInput = userForm['startingDate']
+  agendaContainer = document.getElementById("agendas")
+
+  //calling function to populate the user dropdown with available users whe page loads
   populateDropdown(users, userDropdown)
+
+  //eventlistener for when a user is selected/changed
+  userDropdown.addEventListener('change', (e) => {
+    refreshAgendaDisplay(e.target.value)
+  })
+
 };
 
+// fetches displays data for selected user
+function refreshAgendaDisplay(userId) {
+  const userData = getData(userId) || [];
+  agendaContainer.textContent = "";
+  renderAgenda(userData)
+}
 
+//populates dropdown with users
 function populateDropdown(users, userDropdown) {
   if (!userDropdown) return;
-  
   users.forEach(userId => {
     const option = document.createElement('option');
     option.value = userId;
     option.textContent = `User ${userId}`;
     userDropdown.appendChild(option);
+    
   });
 }
 
 
-
-/*let newData = [
-  {
-    userId: 1,
-    topic: "the great trek",
-    date: "2025/03/31"
-  },
-  {
-    userId: 1,
-    topic: "the great trek",
-    date: "2025/03/31"
-  }
-]*/
 //This function displays the agendas for the selected user. This function will run only when a user is selected
-let agendaContainer = document.getElementById("agendas")
-function renderAgenda(Userdata) {
+function renderAgenda(userData) {
+  if (userData.length === 0) {
+    agendaContainer.textContent = `No agendas for this user.`;
+    return;
+  }
 
-  let agendaList = document.createElement("li")
-  Userdata.forEach(user => {
-    let listItem = document.createElement("ul")
+  let agendaList = document.createElement("ol")
+  userData.forEach(user => {
+    let listItem = document.createElement("li")
     listItem.textContent = `${user.topic} start date:${user.date}`
 
     agendaList.appendChild(listItem)
