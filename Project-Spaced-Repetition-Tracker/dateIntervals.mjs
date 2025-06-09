@@ -1,8 +1,10 @@
+// This functions adds a given number of months to a date
 function addMonths(date, months) {
-  const dte = new Date(date);
-  const day = dte.getDate();
-  dte.setMonth(dte.getMonth() + months);
+  const dte = new Date(date); // This is cloning the original date
+  const day = dte.getDate();  // This stores the original day (e.g. 31)
+  dte.setMonth(dte.getMonth() + months); // Adding months 
 
+  // This handles invalid dates after adding months
   if (dte.getDate() < day) {
     dte.setDate(0);
   }
@@ -10,6 +12,7 @@ function addMonths(date, months) {
   return dte;
 }
 
+// This function returns spaced repetition dates from a start date
 function getSpacedRepetitionDates(startDate) {
   const baseDate = new Date(startDate);
   const intervals = [
@@ -20,6 +23,7 @@ function getSpacedRepetitionDates(startDate) {
     { days: 0, months: 12 }, // 1 year
   ];
 
+  // This is mapping each interval to a new date based on the start date
   return intervals.map((interval) => {
     let date = new Date(baseDate);
     if (interval.days) {
@@ -30,7 +34,7 @@ function getSpacedRepetitionDates(startDate) {
     }
     // Truncate time for display (set to 00:00:00 UTC)
     date.setUTCHours(0, 0, 0, 0);
-    return date.toISOString().slice(0, 10); 
+    return date.toISOString().slice(0, 10); // Slicing to return only the dates
   });
 }
 
