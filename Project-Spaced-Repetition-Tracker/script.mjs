@@ -6,6 +6,7 @@
 
 // needed variables
 import { getUserIDs } from "./common.mjs";
+import { getSpacedRepetitionDates } from "./dateIntervals.mjs";
 
 window.onload = function () {
   const users = getUserIDs();
