@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Spaced Repetition Tracker App</title>
   </head>
   <body>
     <h2>Spaced Repetition Tracker App</h2>
-    <br>
+    <br />
     <label for="dropdown">Select User:</label>
     <select id="dropdown" name="userDropdown">
       <option>select a user</option>
@@ -18,12 +18,12 @@
         id="topicName"
         placeholder="Please enter a topic"
         name="topicName"
-        required /><br />
+        required
+      /><br />
       <label for="startingDate">Starting Date:</label>
-      <input type="date" id="startingDate" name="startingDate" required /><br />
+      <input type="date" id="startingDate" name="startingDate" required />
       <input type="submit" value="Add Topic" />
     </form>
-   
     <div id="agendas"></div>
     <script type="module" src="script.mjs"></script>
   </body>
