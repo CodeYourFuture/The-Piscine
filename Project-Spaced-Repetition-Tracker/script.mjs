@@ -87,25 +87,20 @@ function renderAgenda(userData) {
     return;
   }
 
-  let agendaList = document.createElement("ol");
+  
+  let agendaList = document.createElement("div");
   futureAgendas.forEach((entry) => {
-    let listItem = document.createElement("li");
-    let topicHeading = document.createElement("h3");
-    topicHeading.textContent = entry.topic;
-
-    let dateParagraph = document.createElement("p");
-    dateParagraph.textContent = `Start date: ${entry.date}`;
+    let listItem = document.createElement("div");
+    listItem.textContent = `${entry.topic}, ${entry.date}`;
 
     // Get spaced repetition dates
     const spacedDates = getSpacedRepetitionDates(entry.date);
-    let spacedList = document.createElement("ul");
     spacedDates.forEach((d) => {
-      let spacedItem = document.createElement("li");
-      spacedItem.textContent = `Review on: ${d}`;
-      spacedList.appendChild(spacedItem);
+      let spacedItem = document.createElement("div");
+      spacedItem.textContent = `${entry.topic}, ${d}`;
+      agendaList.appendChild(spacedItem);
     });
 
-    listItem.append(topicHeading, dateParagraph, spacedList);
     agendaList.appendChild(listItem);
   });
 
