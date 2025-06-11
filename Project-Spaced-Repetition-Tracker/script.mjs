@@ -10,7 +10,9 @@ import { getSpacedRepetitionDates } from "./dateIntervals.mjs"; // or whatever y
 
 let agendaContainer;
 window.onload = function () {
-  const users = getUserIds.getElementById("form");
+  const users = getUserIds();
+  const userDropdown = document.getElementById("dropdown");
+  const userForm = document.getElementById("form");
   const topicInput = userForm["topicName"];
   const startingDateInput = userForm["startingDate"];
   startingDateInput.valueAsDate = new Date();
