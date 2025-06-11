@@ -34,8 +34,10 @@ function getSpacedRepetitionDates(startDate) {
     }
     // Truncate time for display (set to 00:00:00 UTC)
     date.setUTCHours(0, 0, 0, 0);
-    return date.toISOString().slice(0, 10); // Slicing to return only the dates
-  });
+    return date; // Slicing to return only the dates
+  })
+  .filter(date => date > today)
+  .map(date => date.toISOString().slice(0, 10)); // Format the date to YYYY-MM-DD
 }
 
 export { getSpacedRepetitionDates };
