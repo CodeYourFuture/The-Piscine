@@ -11,7 +11,6 @@ import { getSpacedRepetitionDates } from "./dateIntervals.mjs"; // or whatever y
 
 let agendaContainer;
 window.onload = function () {
-
   const userForm = document.getElementById("form");
   const userDropdown = document.getElementById("dropdown");
   const users = getUserIds();
@@ -91,13 +90,13 @@ function renderAgenda(userData) {
   let agendaList = document.createElement("div");
   futureAgendas.forEach((entry) => {
     let listItem = document.createElement("div");
-    listItem.textContent = `${entry.topic}, ${entry.date}`;
+    listItem.textContent = `${entry.topic}, ${getOrdinal(new Date(entry.date))}`;
 
     // Get spaced repetition dates
     const spacedDates = getSpacedRepetitionDates(entry.date);
     spacedDates.forEach((d) => {
       let spacedItem = document.createElement("div");
-      spacedItem.textContent = `${entry.topic}, ${d}`;
+      spacedItem.textContent = `${entry.topic}, ${getOrdinal(new Date(d))}`;
       agendaList.appendChild(spacedItem);
     });
 
