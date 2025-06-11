@@ -4,13 +4,13 @@
 // Note that when running locally, in order to open a web page which uses modules, you must serve the directory over HTTP e.g. with https://www.npmjs.com/package/http-server
 // You can't open the index.html file using a file:// URL.
 
-import { getUserIDs } from "./common.mjs";
+import { getUserIds } from "./common.mjs";
 import { addData, getData, clearData } from "./storage.mjs";
 import { getSpacedRepetitionDates } from "./dateIntervals.mjs"; // or whatever your file is called
 
 let agendaContainer;
 window.onload = function () {
-  const users = getUserIDs.getElementById("form");
+  const users = getUserIds.getElementById("form");
   const topicInput = userForm["topicName"];
   const startingDateInput = userForm["startingDate"];
   startingDateInput.valueAsDate = new Date();
