@@ -15,6 +15,9 @@ function addMonths(date, months) {
 // This function returns spaced repetition dates from a start date
 function getSpacedRepetitionDates(startDate) {
   const baseDate = new Date(startDate);
+  const today = new Date();
+  today.setUTCHours(0, 0, 0, 0); // Truncate time for comparison
+  
   const intervals = [
     { days: 7, months: 0 }, // 1 week
     { days: 0, months: 1 }, // 1 month
