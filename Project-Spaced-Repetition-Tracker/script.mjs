@@ -4,14 +4,13 @@
 // Note that when running locally, in order to open a web page which uses modules, you must serve the directory over HTTP e.g. with https://www.npmjs.com/package/http-server
 // You can't open the index.html file using a file:// URL.
 
-import { getUserIds } from "./common.mjs";
+import { getUserIDs } from "./common.mjs";
 import { addData, getData, clearData } from "./storage.mjs";
 import { getSpacedRepetitionDates } from "./dateIntervals.mjs"; // or whatever your file is called
 
-
 let agendaContainer;
 window.onload = function () {
-  const users = getUserIds.getElementById("form");
+  const users = getUserIDs.getElementById("form");
   const topicInput = userForm["topicName"];
   const startingDateInput = userForm["startingDate"];
   startingDateInput.valueAsDate = new Date();
@@ -77,14 +76,13 @@ function renderAgenda(userData) {
   const today = new Date().toISOString().slice(0, 10);
 
   // Filter to only show future dates
-  const futureAgendas = userData.filter(entry => entry.date >= today);
+  const futureAgendas = userData.filter((entry) => entry.date >= today);
 
   if (futureAgendas.length === 0) {
     agendaContainer.textContent = `No future agendas for this user.`;
     return;
   }
 
- 
   let agendaList = document.createElement("div");
   futureAgendas.forEach((entry) => {
     let listItem = document.createElement("div");
