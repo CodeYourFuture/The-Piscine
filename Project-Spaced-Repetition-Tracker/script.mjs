@@ -4,17 +4,14 @@
 // Note that when running locally, in order to open a web page which uses modules, you must serve the directory over HTTP e.g. with https://www.npmjs.com/package/http-server
 // You can't open the index.html file using a file:// URL.
 
-import { getUserIDs } from "./common.mjs";
+import { getUserIds } from "./common.mjs";
 import { addData, getData, clearData } from "./storage.mjs";
 import { getSpacedRepetitionDates } from "./dateIntervals.mjs"; // or whatever your file is called
 
 
 let agendaContainer;
 window.onload = function () {
-  const users = getUserIDs();
-  //document.querySelector("body").innerText = `There are ${users.length} users`;
-  const userDropdown = document.getElementById("dropdown");
-  const userForm = document.getElementById("form");
+  const users = getUserIds.getElementById("form");
   const topicInput = userForm["topicName"];
   const startingDateInput = userForm["startingDate"];
   startingDateInput.valueAsDate = new Date();
@@ -87,25 +84,20 @@ function renderAgenda(userData) {
     return;
   }
 
-  let agendaList = document.createElement("ol");
+ 
+  let agendaList = document.createElement("div");
   futureAgendas.forEach((entry) => {
-    let listItem = document.createElement("li");
-    let topicHeading = document.createElement("h3");
-    topicHeading.textContent = entry.topic;
-
-    let dateParagraph = document.createElement("p");
-    dateParagraph.textContent = `Start date: ${entry.date}`;
+    let listItem = document.createElement("div");
+    listItem.textContent = `${entry.topic}, ${entry.date}`;
 
     // Get spaced repetition dates
     const spacedDates = getSpacedRepetitionDates(entry.date);
-    let spacedList = document.createElement("ul");
     spacedDates.forEach((d) => {
-      let spacedItem = document.createElement("li");
-      spacedItem.textContent = `Review on: ${d}`;
-      spacedList.appendChild(spacedItem);
+      let spacedItem = document.createElement("div");
+      spacedItem.textContent = `${entry.topic}, ${d}`;
+      agendaList.appendChild(spacedItem);
     });
 
-    listItem.append(topicHeading, dateParagraph, spacedList);
     agendaList.appendChild(listItem);
   });
 
