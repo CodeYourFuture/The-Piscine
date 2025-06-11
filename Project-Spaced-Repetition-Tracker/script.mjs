@@ -8,12 +8,12 @@ import { getUserIds, getOrdinal } from "./common.mjs";
 import { addData, getData, clearData } from "./storage.mjs";
 import { getSpacedRepetitionDates } from "./dateIntervals.mjs"; // or whatever your file is called
 
-
 let agendaContainer;
 window.onload = function () {
-  const userForm = document.getElementById("form");
-  const userDropdown = document.getElementById("dropdown");
+
   const users = getUserIds();
+  const userDropdown = document.getElementById("dropdown");
+  const userForm = document.getElementById("form");
   const topicInput = userForm["topicName"];
   const startingDateInput = userForm["startingDate"];
   startingDateInput.valueAsDate = new Date();
@@ -79,14 +79,13 @@ function renderAgenda(userData) {
   const today = new Date().toISOString().slice(0, 10);
 
   // Filter to only show future dates
-  const futureAgendas = userData.filter(entry => entry.date >= today);
+  const futureAgendas = userData.filter((entry) => entry.date >= today);
 
   if (futureAgendas.length === 0) {
     agendaContainer.textContent = `No future agendas for this user.`;
     return;
   }
 
- 
   let agendaList = document.createElement("div");
   futureAgendas.forEach((entry) => {
     let listItem = document.createElement("div");
