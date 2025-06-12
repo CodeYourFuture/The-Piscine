@@ -81,11 +81,7 @@ function renderAgenda(userData) {
 
   userData.forEach((entry) => {
     if (entry.date >= today) {
-      allEntries.push({
-        topic: entry.topic,
-        date: entry.date,
-      });
-
+      
       const spacedDates = getSpacedRepetitionDates(entry.date);
       spacedDates.forEach((d) => {
         if (d >= today) {
