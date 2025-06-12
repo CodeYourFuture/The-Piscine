@@ -8,12 +8,11 @@ import { getUserIds, getOrdinal } from "./common.mjs";
 import { addData, getData, clearData } from "./storage.mjs";
 import { getSpacedRepetitionDates } from "./dateIntervals.mjs"; // or whatever your file is called
 
-
 let agendaContainer;
 window.onload = function () {
-  const userForm = document.getElementById("form");
-  const userDropdown = document.getElementById("dropdown");
   const users = getUserIds();
+  const userDropdown = document.getElementById("dropdown");
+  const userForm = document.getElementById("form");
   const topicInput = userForm["topicName"];
   const startingDateInput = userForm["startingDate"];
   startingDateInput.valueAsDate = new Date();
@@ -69,7 +68,6 @@ function populateDropdown(users, userDropdown) {
   });
 }
 
-//This function displays the agendas for the selected user. This function will run only when a user is selected
 function renderAgenda(userData) {
   if (userData.length === 0) {
     agendaContainer.textContent = `No agendas for this user.`;
@@ -78,26 +76,46 @@ function renderAgenda(userData) {
 
   const today = new Date().toISOString().slice(0, 10);
 
-  // Filter to only show future dates
-  const futureAgendas = userData.filter(entry => entry.date >= today);
+  //collect all dates (main + spaced) in a single array
+  let allEntries = [];
 
-  if (futureAgendas.length === 0) {
+  userData.forEach((entry) => {
+    if (entry.date >= today) {
+      allEntries.push({
+        topic: entry.topic,
+        date: entry.date,
+      });
+
+      const spacedDates = getSpacedRepetitionDates(entry.date);
+      spacedDates.forEach((d) => {
+        if (d >= today) {
+          allEntries.push({
+            topic: entry.topic,
+            date: d,
+          });
+        }
+      });
+    }
+  });
+
+  //sort all entries by date
+  allEntries.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  if (allEntries.length === 0) {
     agendaContainer.textContent = `No future agendas for this user.`;
     return;
   }
 
- 
+  //render the sorted list
   let agendaList = document.createElement("div");
-  futureAgendas.forEach((entry) => {
-  
-    // Get spaced repetition dates
-    const spacedDates = getSpacedRepetitionDates(entry.date);
-    spacedDates.forEach((d) => {
-      let spacedItem = document.createElement("div");
-      spacedItem.textContent = `${entry.topic}, ${getOrdinal(new Date(d))}`;
-      agendaList.appendChild(spacedItem);
-    });
 
+  allEntries.forEach((entry) => {
+    const listItem = document.createElement("div");
+
+    listItem.textContent = `${entry.topic} , ${getOrdinal(
+      new Date(entry.date)
+    )}`;
+    agendaList.appendChild(listItem);
   });
 
   agendaContainer.appendChild(agendaList);
