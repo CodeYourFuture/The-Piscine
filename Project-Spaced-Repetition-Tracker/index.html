@@ -1,8 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <title>Spaced Repetition Tracker</title>
     <script type="module" src="script.mjs"></script>
   </head>
   <body>
+    <h1>Spaced Repetition Agenda</h1>
+    <label for="user-select">Select User:</label>
+    <select id="user-select">
+      <option value="">Choose a user:</option>
+      
+    </select>
+    <br><br> 
+
+    <form id="topic-form">
+      <label for="topic-name">Topic:</label>
+      <input type="text" id="topic-name" name="topic-name" required />
+
+      <label for="start-date">Start Date:</label>
+      <input type="date" id="start-date" name="start-date" required />
+
+      <button type="submit">Add Topic</button>
+
+    </form>
+    <div id="agenda-message"></div>
+    <ul id="agenda-list"></ul>
   </body>
 </html>
