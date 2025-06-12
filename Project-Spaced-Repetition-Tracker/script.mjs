@@ -105,7 +105,7 @@ function renderAgenda(userData) {
   allEntries.forEach((entry) => {
     const listItem = document.createElement("div");
 
-    listItem.textContent = `${entry.topic} , ${getOrdinal(
+    listItem.innerHTML = `<strong>${entry.topic}</strong> , ${getOrdinal(
       new Date(entry.date)
     )}`;
     agendaList.appendChild(listItem);
