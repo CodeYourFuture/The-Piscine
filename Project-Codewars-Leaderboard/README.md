@@ -26,7 +26,7 @@ When a user is happy with the list of usernames, they can trigger your website t
 
 Using the leaderboard ranking data, your website should calculate all of the possible languages that the users have a ranking in. Your website should show a drop-down allowing the user to pick from all of these language rankings, plus the overall ranking.
 
-Your website should display a table for the ranking data that the user has selected from the drop-down. The table should default to showing the overall ranking if a language has not been selected yet. If the user selects another language from the drop-down, the table should show it's ranking data.
+Your website should display a table for the ranking data that the user has selected from the drop-down. The table should default to showing the overall ranking if a language has not been selected yet. If the user selects another language from the drop-down, the table should show its ranking data.
 
 The table should have columns for username, clan and score. Each user should have a row in the table showing their relevant data points for selected language ranking. The rows should be sorted so that the user with the highest score for the selected language ranking is at the top, and the user with the lowest score is at the bottom.
 
@@ -57,9 +57,13 @@ All of the below requirements must be met for the project to be considered compl
 - A table is shown for the current ranking, with columns for each user's username, clan and score
 - Changing the selected ranking will update the table to reflect the newly selected ranking
 - The table is sorted from the highest to lowest score, top to bottom
+- Users without a ranking in a chosen language are not shown in that table
 - The top user's score is visually highlighted
 - The website must score 100 for accessibility in Lighthouse
 - Unit tests must be written for at least one non-trivial function
+- Searching for a user which doesn't exist should show a message to the user explaining this.
+  - If multiple users were searched for, it is acceptable to either just error, or to show the valid users, but the user should be made aware of the invalid users.
+- If fetching from the Codewars API errors (e.g. because you're offline, or made a bad request), the user must be shown a useful error message in the UI.
 
 Below is an example of a table showing the overall ranking for 3 users: CodeYourFuture, SallyMcGrath and 40thieves.
 

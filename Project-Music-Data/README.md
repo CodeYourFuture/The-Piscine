@@ -14,7 +14,7 @@ Some principles to remember throughout this project:
 We have provided a `data.js` file, which contains three functions to provide data for you to analyse. `data.js` is a file containing four functions:
 
 1. `getUserIDs()`: when called, returns an array of strings, each of which is a user ID.
-1. `getListenEvents(userID)`: when called, returns an array of objects, each of which contains information about a single time that the given user listened to a song. The listen events are sorted by when they happened, oldest to newest.
+1. `getListenEvents(userID)`: when called, returns an array of objects, each of which contains information about a single time that the given user listened to a song. The listen events are sorted by when they happened, oldest to newest. The timestamps should be interpreted as in the user's current local time zone.
 2. `getSong(songID)`: when called with one string as an argument, returns an an object containing information about a single song.
 
 ## Requirements
