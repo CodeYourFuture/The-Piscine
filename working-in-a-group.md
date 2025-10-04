@@ -15,7 +15,7 @@ We recommend following these Ways of Working (at a minimum, feel free to add mor
 
 ## Set up the repo
 
-- One person should fork this repo to their own GitHub account and name it `Piscine-Sprint-SPRINT_NUMBER-Project`
+- One person should create a new repo in their own GitHub account and name it `Piscine-Sprint-SPRINT_NUMBER-Project`
 - That person should add the other team members as [collaborators to the repo](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository).
 - Now someone else should make a copy of the [example planner](https://github.com/CodeYourFuture/The-Piscine/projects?query=is%3Aopen) and link it to your project repo.
 
