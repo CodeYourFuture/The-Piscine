@@ -11,7 +11,7 @@ Here are some examples of bookmark sites:
 
 Your task is to write code which allows a user to save a link with a short description and share them with others.
 
-You should make a frontend, which displays a list of bookmarked links and the user’s description. A user can create new bookmarks by submitting a form with the URL and the description. You should use **HTML and JavaScript only**. You should **not** use CSS. We want to focus on your ability to create the correct logic and not spend time on creating the perfect UI.
+You should make a frontend, which displays a list of bookmarked links and the user's description. A user can create new bookmarks by submitting a form with the URL and the description. You should use HTML and JavaScript for this. We want to focus on your ability to create the correct logic and not spend time on creating the perfect UI. You are allowed to use CSS, but you are strongly advised to focus on the logic, and only add styling when you are finished. You will not get any credit for styling.
 
 ## Supplied scaffolding
 
@@ -40,7 +40,11 @@ You **must not** implement any kind of authentication. Just a drop-down to choos
 
 After picking a user, your website should display the list of bookmarks in reverse chronological order. For each bookmark, it should display the title and description of the bookmark. The title should be hyperlink to the URL of the bookmark. The timestamp at which the bookmark was created should be displayed.
 
-Your website must include a form with text inputs for the URL and title, a textarea for the description and submit button that allows a user to add a new topic. This form must be accessible, so for example, hitting the Enter key will also submit the topic name, the same as clicking the submit button.
+Each bookmark should also have:
+- A button which, when clicked, copies the URL to the clipboard.
+- A like counter/button. When a bookmark is first saved, its like count should be 0. Each time a user clicks the like button, that number should go up by one, and be displayed. This like count should be persisted such that closing the page and coming back to it, it is preserved.
+
+Your website must include a form with text inputs for the URL, title, and description, and submit button that allows a user to add a new topic. This form must be accessible, so for example, a user using the keyboard should be able to submit it without using a mouse.
 
 After the new data has been stored, the updated list of bookmarks must be displayed (including the new bookmark) for the relevant user.
 
@@ -58,6 +62,8 @@ All of the below requirements must be met for the project to be considered compl
 - The list of bookmarks must be shown in reverse chronological order
 - Each bookmark has a title, description and created at timestamp displayed
 - Each bookmark’s title is a link to the bookmark’s URL
+- Each bookmark's "Copy to clipboard" button must copy the URL of the bookmark
+- Each bookmark's like counter works independently, and persists data across sessions
 - The website must contain a form with inputs for a URL, a title, and a description. The form should have a submit button.
 - Submitting the form adds a new bookmark for the relevant user only
 - After creating a new bookmark, the list of bookmarks for the current user is shown, including the new bookmark

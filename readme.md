@@ -6,12 +6,12 @@ In this repo there are some individual and some team projects as sub-folders. Yo
 
 Recommended as team projects:
 
+- [Shared Bookmarks](./Project-Shared-Bookmarks)
 - [Days Calendar](./Project-Days-Calendar)
-- [Spaced Repetition Tracker](./Project-Spaced-Repetition-Tracker)
 
 Recommended as individual projects:
 
-- [Shared Bookmarks](./Project-Shared-Bookmarks)
+- [Spaced Repetition Tracker](./Project-Spaced-Repetition-Tracker)
 - [Music Data](./Project-Music-Data)
 - [Codewars Leaderboard](./Project-Codewars-Leaderboard)
 - [Spell Checker](./Project-Spell-Checker)

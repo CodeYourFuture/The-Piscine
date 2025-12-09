@@ -4,7 +4,7 @@ At Code Your Future, we like to use a learning technique called spaced repetitio
 
 One of the difficulties of this approach is tracking which topic should be revised at what time. Your task is to write code which allows a user to track topics and then understand which topic they should revise next.
 
-You should make a frontend, which displays an agenda of topics to revise on specific dates. You should use **HTML and JavaScript only**. You should **not** use CSS. We want to focus on your ability to create the correct logic and not spend time on creating the perfect UI.
+You should make a frontend, which displays an agenda of topics to revise on specific dates. You should use HTML and JavaScript for this. We want to focus on your ability to create the correct logic and not spend time on creating the perfect UI. You are allowed to use CSS, but you are strongly advised to focus on the logic, and only add styling when you are finished. You will not get any credit for styling.
 
 ## Supplied scaffolding
 
@@ -22,7 +22,7 @@ We have also provided a `storage.js` file, which contains three functions to hel
 
 ## Requirements
 
-This is intended to be a group project - your class leaders will tell you how the groups will work.
+This may be an individual or a team project - your class leaders will tell you which you are doing. If it is a team project, they will also tell you how the groups will work.
 
 You must submit both a link to your GitHub repo, and a link to the deployed website.
 
@@ -38,7 +38,7 @@ When a user is selected, you must get the stored data for that user and use it t
 
 If there is an agenda, your website should display a list of topics and the revision date when the user should revise in _chronological order_. For each revision date, it should display the date and the name of the topic to revise. Revision dates in the past should not be displayed.
 
-Your website must include a form with a text input, a date picker and submit button that allows a user to add a new topic. This form must be accessible, so for example, hitting the Enter key will also submit the topic name, the same as clicking the submit button. The form should validate that the topic name and date have be set by the user.
+Your website must include a form with a text input, a date picker and submit button that allows a user to add a new topic. This form must be accessible, so for example, a user using the keyboard should be able to submit it without using a mouse. The form should validate that the topic name and date have be set by the user.
 
 The date picker should default to today’s date, but allow selection of another date. You should use the built-in date picker for browsers, unless attempted as a bonus task. **No credit** is given for using an alternative date picker.
 
@@ -54,9 +54,12 @@ Every view of your website must be accessible (i.e. for each user, with any numb
 >
 > Date calculations can be complicated. Daylight savings time in particular can cause problems.
 >
-> Make sure your date calculations work as you expect, even if adding an interval means that a date crosses a daylight savings boundary.
+> Read [this guidance on handling daylight savings time and time zones](https://stackoverflow.com/questions/2532729/daylight-saving-time-and-time-zone-best-practices).
+>
+> Be sure to check the _exact_ dates returned when testing, even if adding an interval means that a date crosses a daylight savings boundary. Being off by one day will fail your project.
 >
 > A tip here is to either only be adding dates and not times, or to make sure all dates are in UTC.
+
 
 ## Rubric
 
@@ -64,7 +67,7 @@ All of the below requirements must be met for the project to be considered compl
 
 - The website must contain a drop-down which lists exactly 5 users
 - No user is selected on page load
-- All of the users must have no agenda when starting from a "clean state" with no stored data
+- All of the users must have no agenda when first loading (i.e. with clear `localStorage`). Data should be persisted across page loads (which is handled by the code in `storage.mjs`).
 - Selecting a user must load the relevant user's agenda from storage
 - Selecting a user must display the agenda for the relevant user (see manual testing below)
 - If there is no agenda for the selected user, a message is displayed to explain this
@@ -76,7 +79,7 @@ All of the below requirements must be met for the project to be considered compl
 - The website must score 100 for accessibility in Lighthouse
 - Unit tests must be written for at least one non-trivial function
 
-Below are some manual testing steps and expected results, which will be run on all websites to fairly assess them.
+Below are some manual testing steps and expected results, which will be run on all websites to fairly assess them. All of the dates are intended to be exact - if dates are off by one day, that counts as a failure.
 
 Pick the year after the current one (e.g. in 2025, pick 2026).
 
