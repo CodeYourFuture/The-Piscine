@@ -1,8 +1,0 @@
-{
-  "scripts": {
-    "test": "node --test"
-  },
-  "devDependencies": {
-    "nock": "^14.0.0-beta.15"
-  }
-}
