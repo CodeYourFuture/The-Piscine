@@ -1,8 +1,58 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <h1>Global Shared Bookmarks</h1>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <main id="main-content">
+
+    <div>
+      <section id="user-selection-section">
+        <label for="user-select">Select User</label>
+        <select type="change" id="user-id">
+          <!-- User options will be dynamically inserted here -->
+        </select>
+      </section>
+    </div>
+
+
+    <div id="bookmark-section">
+      <div>
+        <section id="add-bookmark-section">
+          <h2>Add a New Bookmark</h2>
+          <form id="add-bookmark-form">
+            <label for="bookmark-title">Bookmark Title</label>
+            <input type="text" id="bookmark-title" name="title" required />
+            <label for="bookmark-url">Bookmark URL</label>
+            <input type="url" id="bookmark-url" name="url"  required />
+            <label for="description">Description</label>
+            <input type="text" id="description" name="description"  required />
+            <button id="submit-bookmark" type="submit">Add Bookmark</button>
+          </form>
+        </section>
+      </div>
+
+      <div>
+        <section id="bookmark-list-section">
+          <h1>Shared Bookmarks</h1>
+          <ul id="bookmark-list">
+            <!-- Bookmarks will be dynamically inserted here -->
+          </ul>
+        </section>
+      </div>
+    </div>
+
+  </main>
+
+
+
+  <script type="module" src="script.js"></script>
+</body>
+
 </html>
