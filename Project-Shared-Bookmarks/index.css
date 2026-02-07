@@ -1,0 +1,102 @@
+/* Base layout styles */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+  background-color: #ffffff;
+  color: #222;
+}
+
+/* Headings styles */
+h1, h2, h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* User selector  style*/
+label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+  font-weight: bold;
+}
+
+select {
+  padding: 0.4rem;
+  font-size: 1rem;
+}
+
+/* Bookmarks list styles */
+#bookmarks {
+  margin-top: 1.5rem;
+}
+
+article {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+article h3 {
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+}
+
+article a {
+  color: #0055aa;
+  text-decoration: underline;
+}
+
+article a:focus,
+article a:hover {
+  outline: 2px solid #0055aa;
+  outline-offset: 2px;
+}
+
+/* Buttons styles */
+button {
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+    /* Form  styles */
+form {
+  margin-top: 2rem;
+  border-top: 2px solid #eee;
+  padding-top: 1rem;
+}
+
+input {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  padding: 0.4rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+/* Small text */
+small {
+  display: block;
+  margin-top: 0.25rem;
+  color: #555;
+}
+
+/* Empty state message */
+#bookmarks:empty::before {
+  content: "No bookmarks yet.";
+  display: block;
+  font-style: italic;
+  color: #555;
+}

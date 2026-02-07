@@ -1,8 +1,37 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shared Bookmarks</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+  <label for="userSelect">Select user</label>
+  <select id="userSelect"></select>
+
+  <section id="bookmarks"></section>
+
+  <h2>Add bookmark</h2>
+  <form id="bookmarkForm">
+    <label>
+      URL
+      <input type="url" id="urlInput" required />
+    </label>
+
+    <label>
+      Title
+      <input type="text" id="titleInput" required />
+    </label>
+
+    <label>
+      Description
+      <input type="text" id="descriptionInput" required />
+    </label>
+
+    <button type="submit">Add</button>
+  </form>
+
+  <script type="module" src="index.js"></script>
+</body>
 </html>
