@@ -22,7 +22,7 @@ Your website must be hosted on the internet, and must be automatically deployed 
 
 You must be able to explain every line of code in your project, even ones other people in your group wrote.
 
-> [!WARN]
+> [!WARNING]
 >
 > Date calculations can be complicated. Daylight savings time in particular can cause problems.
 >
