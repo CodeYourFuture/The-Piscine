@@ -92,8 +92,8 @@ Note that when running locally, in order to open a web page which uses modules, 
 * Open the calendar, it should be showing the current month.
 * Go to October 2024. Observe:
   * A grid of 5 rows x 7 columns.
-  * The first row contains Tuesday October 1 - Sunday October 6. Sunday and Monday are either labelled for September 29/30 or are blank.
-  * The last row contains Monday October 28 - Thursday October 31. Friday  and Saturday are either labelled for November or are blank.
+  * The first row contains Tuesday October 1 - Saturday October 5. Sunday and Monday are either labelled for September 29/30 or are blank.
+  * The last row contains Sunday October 27 - Thursday October 31. Friday and Saturday are either labelled for November or are blank.
   * October 8th: Ada Lovelace Day.
   * October 25th: World Lemur Day.
 * On the web page, open October 2020. Observe:
