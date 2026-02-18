@@ -50,7 +50,7 @@ Your GitHub repository must contain at least one unit test which demonstrates th
 
 Every view of your website must be accessible (i.e. for each user, with any number of topics, etc). We will test this by making sure that "Snapshot" mode of Lighthouse gives 100% accessibility for any view we look at.
 
-> [!WARN]
+> [!WARNING]
 >
 > Date calculations can be complicated. Daylight savings time in particular can cause problems.
 >
