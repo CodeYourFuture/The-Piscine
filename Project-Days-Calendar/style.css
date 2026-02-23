@@ -1,0 +1,33 @@
+main {
+    display: grid;
+}
+.week-section {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1rem;
+}
+h1 {
+    margin: 0.2rem;
+}
+h3 {
+    margin: 0.5rem;
+}
+.month-carousel{
+    display: flex;
+    flex-direction: row;
+}
+#header{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+.days {
+    margin: 5px;
+}
+.previous-month .next-month {
+    margin: 5px;
+}
+
+.footer p {
+    text-align: center;
+}
