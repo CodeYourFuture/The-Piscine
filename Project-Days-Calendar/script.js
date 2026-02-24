@@ -23,7 +23,7 @@ function renderCalendar(month, year) {
 
     for (let i = 0; i < daysOfTheWeek.length; i++) {
         const dayOfTheWeek = document.createElement("div");
-        const header = document.createElement("h5");
+        const header = document.createElement("h2");
         header.classList.add("dayOfTheWeek")
         header.textContent = daysOfTheWeek[i];        
         root.appendChild(dayOfTheWeek);
@@ -32,9 +32,12 @@ function renderCalendar(month, year) {
     const firstDayIndex = new Date(year, month, 1).getDay();    
     const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-    for (let i = 0; i < firstDayIndex; i++) {
-        const emptyCell = document.createElement("div");     
-        root.appendChild(emptyCell)
+    const prevMonthLastDay = new Date(year, month, 0).getDate();
+    for (let i = firstDayIndex; i > 0; i--) {
+        const dayDiv = document.createElement("div");  
+        dayDiv.textContent = prevMonthLastDay - i + 1;
+        dayDiv.classList.add('fade')
+        root.appendChild(dayDiv)
     }
     for (let day = 1; day <= daysInMonth; day++) {
         const dayCard = renderDay(day); 
@@ -42,6 +45,15 @@ function renderCalendar(month, year) {
             dayCard.classList.add("today");
         }
         root.appendChild(dayCard);
+    }
+
+    const nextMonthStartDay = 7 - new Date(year, month + 1, 0).getDay();
+    for (let i = 1; i < nextMonthStartDay; i++) {
+        const dayDiv = document.createElement("div");
+        dayDiv.textContent = i;
+        dayDiv.classList.add('fade')
+        root.appendChild(dayDiv)  
+
     }
 }
 

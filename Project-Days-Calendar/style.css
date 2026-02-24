@@ -16,9 +16,21 @@ h1 {
     margin-block-end: 0;
     text-align: center;
 }
+h2 {
+    font-size: medium;
+}
 .dayOfTheWeek {
     margin: 0.5rem;
     text-align: center;
+}
+.fade {
+    text-align: center;
+    border: solid 1px;
+    margin: 5px;
+    padding-block: 1px;
+    padding-inline: 6px;
+    color: gray;
+    border-radius: 0.2rem;
 }
 .month-carousel{
     display: flex;
