@@ -15,21 +15,19 @@
   </head>
   <body>
     <header id="header">
-      <label for="month-selector">Month:</label>
-      <select name="month-selector" id="month-selector">
-        <option>February</option>
-      </select>
-      <label for="year-selector">year: </label>
-      <select name="year-selector" id="year-selector">
-        <option>2024</option>
-      </select>
-    </header>
-    <main>
       <div class="month-carousel">
         <button class="previous-month"><<</button>
         <div id="month" class="month-value"><h1></h1></div>
         <button class="next-month">>></button>
       </div>
+      <div>
+        <label for="year-selector">year: </label>
+        <select name="year-selector" id="year-selector">
+          <option></option>
+        </select>
+      </div>
+    </header>
+    <main>
       <section class="week-section"></section>
     </main>
     <footer class="footer">

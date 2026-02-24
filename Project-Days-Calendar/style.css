@@ -27,7 +27,7 @@ h1 {
 #header{
     display: flex;
     flex-direction: row;
-    justify-content: right;
+    justify-content: space-between;
 }
 .days {
     margin: 5px;
