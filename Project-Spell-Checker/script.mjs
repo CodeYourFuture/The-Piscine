@@ -4,7 +4,7 @@
 // Note that when running locally, in order to open a web page which uses modules, you must serve the directory over HTTP e.g. with https://www.npmjs.com/package/http-server
 // You can't open the index.html file using a file:// URL.
 
-import { getDictionarySize } from "./common.mjs";
+import { getDictionarySize, checkWordsInDictionary } from "./common.mjs";
 
 window.onload = function () {
     const body = document.querySelector("body")
@@ -14,19 +14,21 @@ window.onload = function () {
     const subTitle = document.createElement("h2");
     subTitle.textContent = "Check your text";
     textSection.append(subTitle);
-    const text = document.createElement("textarea"); 
-    text.id = "text-field"
-    text.placeholder = "Put you text here if you want to check it";
-    textSection.append(text);
-    const checkBtn = document.createElement("button");
-    checkBtn.classList.add = "check-btn"
-    checkBtn.textContent = "check";
-    textSection.append(checkBtn);
+    const textarea = document.createElement("textarea"); 
+    textarea.id = "text-field"
+    textarea.placeholder = "Put you text here if you want to check it";
+    textSection.append(textarea);
+    const button = document.createElement("button");
+    button.classList.add = "check"
+    button.textContent = "check";
+    textSection.append(button);
     
 
-    checkBtn.addEventListener("click", () => {
-        const checkingText = text.value;
-        spellChecking(checkingText)
+    button.addEventListener("click", () => {
+
+        const wordsArray = splitTheText(textarea.value);
+        const checkedWords = checkWordsInDictionary(wordsArray);
+        console.log(checkedWords)
     })
 
 
@@ -37,7 +39,9 @@ function spellChecking(text) {
     
 }
 export function splitTheText(text) {
-    const arrayOfWords = text.trim.split(/\s+/)
-    return arrayOfWords;
+    return text
+        .toLowerCase()
+        .replace(/[^\w\s]/g, "")
+        .trim()
+        .split(/\s+/);
 }
-
