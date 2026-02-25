@@ -10,5 +10,3 @@ export function checkWordsInDictionary(wordsArray) {
         isCorrect: dictionarySet.has(word.toLowerCase())
     }));
 }
-const array = ['badd', 'bag', 'balannce', 'ball', 'band', 'bases', 'basin', 'basket'] 
-console.log(checkWordsInDictionary(array))

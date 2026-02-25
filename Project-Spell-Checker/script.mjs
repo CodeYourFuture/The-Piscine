@@ -9,35 +9,61 @@ import { getDictionarySize, checkWordsInDictionary } from "./common.mjs";
 window.onload = function () {
     const body = document.querySelector("body")
     body.innerText = `There are ${getDictionarySize()} words in the Basic English dictionary`;
-    const textSection = document.createElement("section");
-    body.append(textSection);
+    const section = document.createElement("section");
+    body.append(section);
+    const label = document.createElement("label");
+    label.htmlFor = "text-input";
+    label.textContent = "Enter text to check:";
+    section.append(label);
+
     const subTitle = document.createElement("h2");
     subTitle.textContent = "Check your text";
-    textSection.append(subTitle);
+    section.append(subTitle);
     const textarea = document.createElement("textarea"); 
     textarea.id = "text-field"
+    textarea.rows = 6;
+    textarea.cols = 50; 
     textarea.placeholder = "Put you text here if you want to check it";
-    textSection.append(textarea);
+    section.append(textarea);
     const button = document.createElement("button");
     button.classList.add = "check"
     button.textContent = "check";
-    textSection.append(button);
+    section.append(button);
+    const resultDiv = document.createElement("div");
+    section.append(resultDiv);
+    
+    textarea.addEventListener("input", () => {
+        resultDiv.innerHTML = "";
+    });
+
     
 
     button.addEventListener("click", () => {
 
         const wordsArray = splitTheText(textarea.value);
         const checkedWords = checkWordsInDictionary(wordsArray);
-        console.log(checkedWords)
+        renderResult(checkedWords,resultDiv)
     })
 
 
 }
 
-function spellChecking(text) {
-    splitTheText(text);
-    
+function renderResult(checkedWords, container) {
+    container.innerHTML = "";
+
+    checkedWords.forEach(item => {
+        const span = document.createElement("span");
+        span.textContent = item.word + " ";
+
+        if (!item.isCorrect) {
+            span.style.textDecoration = "underline";
+            span.style.textDecorationColor = "red";
+        }
+
+        container.append(span);
+    });
 }
+
 export function splitTheText(text) {
     return text
         .toLowerCase()
