@@ -15,10 +15,29 @@ window.onload = function () {
     subTitle.textContent = "Check your text";
     textSection.append(subTitle);
     const text = document.createElement("textarea"); 
+    text.id = "text-field"
     text.placeholder = "Put you text here if you want to check it";
     textSection.append(text);
     const checkBtn = document.createElement("button");
+    checkBtn.classList.add = "check-btn"
     checkBtn.textContent = "check";
     textSection.append(checkBtn);
+    
+
+    checkBtn.addEventListener("click", () => {
+        const checkingText = text.value;
+        spellChecking(checkingText)
+    })
+
 
 }
+
+function spellChecking(text) {
+    splitTheText(text);
+    
+}
+export function splitTheText(text) {
+    const arrayOfWords = text.trim.split(/\s+/)
+    return arrayOfWords;
+}
+
