@@ -6,31 +6,38 @@
 
 import { getDictionarySize, checkWordsInDictionary, addWordToDictionary } from "./common.mjs";
 
+const body = document.querySelector("body")
+const paragraph = document.createElement("p");
+paragraph.textContent  = `There are ${getDictionarySize()} words in the Basic English dictionary`;
+body.append(paragraph);
+const main = document.querySelector("main");
+
 window.onload = function () {
-    const body = document.querySelector("body")
-    body.innerText = `There are ${getDictionarySize()} words in the Basic English dictionary`;
+    const title = this.document.createElement("h1");
+    title.textContent = "Basic English Spell Checker";
+    main.append(title);
     const section = document.createElement("section");
-    body.append(section);
+    main.append(section);
     const label = document.createElement("label");
     label.htmlFor = "text-input";
     label.textContent = "Enter text to check:";
     section.append(label);
-
-    const subTitle = document.createElement("h2");
-    subTitle.textContent = "Check your text";
-    section.append(subTitle);
     const textarea = document.createElement("textarea"); 
-    textarea.id = "text-field"
+    textarea.id = "text-input";
     textarea.rows = 6;
     textarea.cols = 50; 
     textarea.placeholder = "Put you text here if you want to check it";
     section.append(textarea);
     const button = document.createElement("button");
-    button.classList.add = "check"
+    button.classList.add("check");
     button.textContent = "check";
     section.append(button);
     const resultDiv = document.createElement("div");
     section.append(resultDiv);
+    const subTitle = document.createElement("h2");
+    subTitle.classList.add("result-title");
+    subTitle.textContent = "Checked your text";
+    section.append(subTitle);
     
     textarea.addEventListener("input", () => {
         resultDiv.innerHTML = "";
@@ -64,6 +71,8 @@ function renderResult(checkedWords, container) {
                 addWordToDictionary(item.word);
                 span.style.textDecoration = "none";
                 addButton.remove();
+                console.log(getDictionarySize());
+                paragraph.innerText = `There are ${getDictionarySize()} words in the Basic English dictionary`;
             })
             span.append(addButton);
         }
