@@ -1,7 +1,8 @@
 {
   "name": "project-spell-checker",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
-    "test": "node common.test.mjs"
+    "test": "node --test"
   }
 }
