@@ -4,7 +4,7 @@
 // Note that when running locally, in order to open a web page which uses modules, you must serve the directory over HTTP e.g. with https://www.npmjs.com/package/http-server
 // You can't open the index.html file using a file:// URL.
 
-import { getDictionarySize, checkWordsInDictionary } from "./common.mjs";
+import { getDictionarySize, checkWordsInDictionary, addWordToDictionary } from "./common.mjs";
 
 window.onload = function () {
     const body = document.querySelector("body")
@@ -58,6 +58,14 @@ function renderResult(checkedWords, container) {
         if (!item.isCorrect) {
             span.style.textDecoration = "underline";
             span.style.textDecorationColor = "red";
+            const addButton = document.createElement("button")
+            addButton.textContent = "add to dictionary";
+            addButton.addEventListener("click", () => {
+                addWordToDictionary(item.word);
+                span.style.textDecoration = "none";
+                addButton.remove();
+            })
+            span.append(addButton);
         }
 
         container.append(span);

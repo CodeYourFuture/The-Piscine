@@ -10,3 +10,9 @@ export function checkWordsInDictionary(wordsArray) {
         isCorrect: dictionarySet.has(word.toLowerCase())
     }));
 }
+
+export function addWordToDictionary(word) {
+    if (!words.includes(word.toLowerCase())) {
+        words.push(word.toLowerCase());
+    }
+}
