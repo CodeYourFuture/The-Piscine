@@ -34,10 +34,6 @@ window.onload = function () {
     section.append(button);
     const resultDiv = document.createElement("div");
     section.append(resultDiv);
-    const subTitle = document.createElement("h2");
-    subTitle.classList.add("result-title");
-    subTitle.textContent = "Checked your text";
-    section.append(subTitle);
     
     textarea.addEventListener("input", () => {
         resultDiv.innerHTML = "";
@@ -60,24 +56,23 @@ function renderResult(checkedWords, container) {
 
     checkedWords.forEach(item => {
         const span = document.createElement("span");
-        span.textContent = item.word + " ";
+        span.textContent = item.word;
+
 
         if (!item.isCorrect) {
-            span.style.textDecoration = "underline";
-            span.style.textDecorationColor = "red";
+            span.classList.add("misspelled");
             const addButton = document.createElement("button")
             addButton.textContent = "add to dictionary";
             addButton.addEventListener("click", () => {
                 addWordToDictionary(item.word);
                 span.style.textDecoration = "none";
                 addButton.remove();
-                console.log(getDictionarySize());
-                paragraph.innerText = `There are ${getDictionarySize()} words in the Basic English dictionary`;
             })
             span.append(addButton);
         }
 
         container.append(span);
+        container.append(" ");
     });
 }
 
