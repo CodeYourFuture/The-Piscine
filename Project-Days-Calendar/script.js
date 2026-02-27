@@ -61,6 +61,11 @@ function renderDay(dayNumber) {
     const dayCard = document.createElement("button");
     dayCard.classList.add("days");
     dayCard.textContent = dayNumber;
+    dayCard.addEventListener("click", () => {
+        const selectedDate = new Date(currentYear, currentMonth, dayNumber);
+        alert(`You selected: ${selectedDate.toDateString()}`);
+        
+    })
     root.appendChild(dayCard);
     return dayCard;
 }
