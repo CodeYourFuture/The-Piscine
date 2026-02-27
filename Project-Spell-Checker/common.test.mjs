@@ -1,4 +1,5 @@
 import { getDictionarySize, checkWordsInDictionary, addWordToDictionary } from "./common.mjs";
+import { renderResult, splitTheText } from "./script.mjs";
 
 import assert from "node:assert";
 import test from "node:test";
@@ -52,4 +53,17 @@ test("Adding a word that already exists does not change the dictionary size", ()
   addWordToDictionary("he");
   const newSize = getDictionarySize();
   assert.equal(initialSize, newSize);
+});
+test("Splitting text into words", () => {
+  const text = "Hello, world! This is a test.";
+  const expectedWords = ["Hello", "world", "This", "is", "a", "test"];
+  const result = splitTheText(text);
+  assert.deepEqual(result, expectedWords);
+});
+
+test("Splitting text with multiple spaces and punctuation", () => {
+  const text = "Hello...   world! This is a test.";
+  const expectedWords = ["Hello", "world", "This", "is", "a", "test"];
+  const result = splitTheText(text);
+  assert.deepEqual(result, expectedWords);
 });

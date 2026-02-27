@@ -6,52 +6,48 @@
 
 import { getDictionarySize, checkWordsInDictionary, addWordToDictionary } from "./common.mjs";
 
-const body = document.querySelector("body")
-const paragraph = document.createElement("p");
-paragraph.textContent  = `There are ${getDictionarySize()} words in the Basic English dictionary`;
-body.append(paragraph);
-const main = document.querySelector("main");
-
-window.onload = function () {
-    const title = this.document.createElement("h1");
-    title.textContent = "Basic English Spell Checker";
-    main.append(title);
-    const section = document.createElement("section");
-    main.append(section);
-    const label = document.createElement("label");
-    label.htmlFor = "text-input";
-    label.textContent = "Enter text to check:";
-    section.append(label);
-    const textarea = document.createElement("textarea"); 
-    textarea.id = "text-input";
-    textarea.rows = 6;
-    textarea.cols = 50; 
-    textarea.placeholder = "Put you text here if you want to check it";
-    section.append(textarea);
-    const button = document.createElement("button");
-    button.classList.add("check");
-    button.textContent = "check";
-    section.append(button);
-    const resultDiv = document.createElement("div");
-    section.append(resultDiv);
+export function initUI() {
+    const body = document.querySelector("body");
+    const paragraph = document.createElement("p");
+    paragraph.textContent = `There are ${getDictionarySize()} words in the Basic English dictionary`;
+    body.append(paragraph);
+    const main = document.querySelector("main");
+    window.onload = function () {
+        const title = this.document.createElement("h1");
+        title.textContent = "Basic English Spell Checker";
+        main.append(title);
+        const section = document.createElement("section");
+        main.append(section);
+        const label = document.createElement("label");
+        label.htmlFor = "text-input";
+        label.textContent = "Enter text to check:";
+        section.append(label);
+        const textarea = document.createElement("textarea");
+        textarea.id = "text-input";
+        textarea.rows = 6;
+        textarea.cols = 50;
+        textarea.placeholder = "Put you text here if you want to check it";
+        section.append(textarea);
+        const button = document.createElement("button");
+        button.classList.add("check");
+        button.textContent = "check";
+        section.append(button);
+        const resultDiv = document.createElement("div");
+        section.append(resultDiv);
     
-    textarea.addEventListener("input", () => {
-        resultDiv.innerHTML = "";
-    });
+        textarea.addEventListener("input", () => {
+            resultDiv.innerHTML = "";
+        });
+        button.addEventListener("click", () => {
 
-    
-
-    button.addEventListener("click", () => {
-
-        const wordsArray = splitTheText(textarea.value);
-        const checkedWords = checkWordsInDictionary(wordsArray);
-        renderResult(checkedWords,resultDiv)
-    })
-
-
+            const wordsArray = splitTheText(textarea.value);
+            const checkedWords = checkWordsInDictionary(wordsArray);
+            renderResult(checkedWords, resultDiv)
+        })
+    };
 }
 
-function renderResult(checkedWords, container) {
+export function renderResult(checkedWords, container) {
     container.innerHTML = "";
 
     checkedWords.forEach(item => {
@@ -59,7 +55,7 @@ function renderResult(checkedWords, container) {
         span.textContent = item.word;
 
 
-        if (!item.isCorrect) {
+        if (!item.isCorrect && item.word[0] !== item.word[0].toUpperCase()) {
             span.classList.add("misspelled");
             const addButton = document.createElement("button")
             addButton.textContent = "add to dictionary";
@@ -78,7 +74,6 @@ function renderResult(checkedWords, container) {
 
 export function splitTheText(text) {
     return text
-        .toLowerCase()
         .replace(/[^\w\s]/g, "")
         .trim()
         .split(/\s+/);
