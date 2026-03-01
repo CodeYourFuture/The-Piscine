@@ -10,7 +10,7 @@ const root = document.querySelector(".week-section");
 const currentDate = new Date();
 const currentDay = currentDate.getDay();
 let currentMonth = new Date().getMonth();
-let currentYear = new Date().getFullYear();
+const currentYear = new Date().getFullYear();
 
 
 renderMonth(currentMonth)
@@ -31,7 +31,6 @@ function renderCalendar(month, year) {
     }        
     const firstDayIndex = new Date(year, month, 1).getDay();    
     const daysInMonth = new Date(year, month + 1, 0).getDate();
-
     const prevMonthLastDay = new Date(year, month, 0).getDate();
     for (let i = firstDayIndex; i > 0; i--) {
         const dayDiv = document.createElement("div");  
@@ -41,7 +40,7 @@ function renderCalendar(month, year) {
     }
     for (let day = 1; day <= daysInMonth; day++) {
         const dayCard = renderDay(day); 
-        if (day === currentDate.getDate() && year === currentDate.getFullYear() && month === currentDate.getMonth()) {
+        if (day == currentDate.getDate() && year == currentDate.getFullYear() && month == currentDate.getMonth()) {
             dayCard.classList.add("today");
         }
         root.appendChild(dayCard);
@@ -62,7 +61,8 @@ function renderDay(dayNumber) {
     dayCard.classList.add("days");
     dayCard.textContent = dayNumber;
     dayCard.addEventListener("click", () => {
-        const selectedDate = new Date(currentYear, currentMonth, dayNumber);
+        const selectedYear = document.querySelector("#year-selector").value;
+        const selectedDate = new Date(selectedYear, currentMonth, dayNumber);
         alert(`You selected: ${selectedDate.toDateString()}`);
         
     })
@@ -92,30 +92,30 @@ function renderYear(selectedYear) {
         console.log(selectedYear)
         const selectedMonth = months.indexOf(document.querySelector("h1").textContent)
         console.log(months.indexOf(document.querySelector("h1").textContent))
-        renderCalendar(selectedMonth,selectedYear)
-  };
+        renderCalendar(selectedMonth, selectedYear)
+    };
 }
-
-const nextBtn = document.querySelector(".next-month");
-nextBtn.addEventListener("click", () => {
+    const nextBtn = document.querySelector(".next-month");
+    nextBtn.addEventListener("click", () => {
         currentMonth++;
+        const selectedYear = document.querySelector("#year-selector").value;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            selectedYear++;
+        }
 
-    if (currentMonth > 11) {
-        currentMonth = 0;
-        currentYear++;
-    }
-
-    renderCalendar(currentMonth, currentYear);
-});
+        renderCalendar(currentMonth, selectedYear);
+    });
 
 const previousMonth = document.querySelector(".previous-month");
 previousMonth.addEventListener("click", () => {
     currentMonth--;
+    const selectedYear = document.querySelector("#year-selector").value;
 
     if (currentMonth < 0) {
         currentMonth = 11;
-        currentYear--;
+        selectedYear--;
     }
 
-    renderCalendar(currentMonth, currentYear);
+    renderCalendar(currentMonth, selectedYear);
 });
