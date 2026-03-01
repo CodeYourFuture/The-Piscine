@@ -17,7 +17,7 @@ renderMonth(currentMonth)
 renderYear(currentYear)
 renderCalendar(currentMonth, currentYear);
 
-function renderCalendar(month, year) {
+export function renderCalendar(month, year) {
     root.innerHTML = "";
     document.querySelector("h1").textContent = months[month];
 
@@ -56,7 +56,7 @@ function renderCalendar(month, year) {
     }
 }
 
-function renderDay(dayNumber) {
+export function renderDay(dayNumber) {
     const dayCard = document.createElement("button");
     dayCard.classList.add("days");
     dayCard.textContent = dayNumber;
@@ -69,11 +69,11 @@ function renderDay(dayNumber) {
     root.appendChild(dayCard);
     return dayCard;
 }
-function renderMonth(month) {
+export function renderMonth(month) {
     const shownMonth = document.querySelector("h1");
     shownMonth.textContent = months[month];
 }
-function renderYear(selectedYear) {
+export function renderYear(selectedYear) {
     const select = document.querySelector("#year-selector");
 
     for (let year = 1950; year <= 2050; year++) {
