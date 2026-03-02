@@ -17,6 +17,27 @@ renderMonth(currentMonth)
 renderYear(currentYear)
 renderCalendar(currentMonth, currentYear);
 
+
+export function createEvent({ title, date }) {
+  return {
+    id: crypto.randomUUID(),
+    title: title.trim(),
+    date, // "YYYY-MM-DD"
+    allDay: true,
+    createdAt: new Date().toISOString()
+  };
+}
+
+export function saveEvent(event) {
+  const events = JSON.parse(localStorage.getItem("calendarEvents")) || [];
+  events.push(event);
+  localStorage.setItem("calendarEvents", JSON.stringify(events));
+}
+
+export function getAllEvents() {
+  return JSON.parse(localStorage.getItem("calendarEvents")) || [];
+}
+
 export function renderCalendar(month, year) {
     root.innerHTML = "";
     document.querySelector("h1").textContent = months[month];
@@ -63,7 +84,21 @@ export function renderDay(dayNumber) {
     dayCard.addEventListener("click", () => {
         const selectedYear = document.querySelector("#year-selector").value;
         const selectedDate = new Date(selectedYear, currentMonth, dayNumber);
-        alert(`You selected: ${selectedDate.toDateString()}`);
+
+        const year = selectedDate.getFullYear();
+        const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
+        const day = String(selectedDate.getDate()).padStart(2, "0");
+        
+        const isoDate = `${year}-${month}-${day}`;
+        if (title) {
+            const event = createEvent({
+                title,
+                date: isoDate
+            });
+            saveEvent(event);
+            alert(`Event saved for ${isoDate}`);
+        }
+        
         
     })
     root.appendChild(dayCard);
