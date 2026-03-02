@@ -76,11 +76,29 @@ export function renderCalendar(month, year) {
 
     }
 }
-
+function deleteEvent(eventId) {
+    let events = getAllEvents();
+    events = events.filter(event => event.id !== eventId);
+    localStorage.setItem("calendarEvents", JSON.stringify(events));
+    renderCalendar(currentMonth, document.querySelector("#year-selector").value);
+}
 export function renderDay(dayNumber) {
-    const dayCard = document.createElement("button");
+    const dayCard = document.createElement("div");
+    const list = document.createElement("ul");
+    const events = getAllEvents();
+    events.forEach(event => {
+        if (event.date === `${document.querySelector("#year-selector").value}-${String(currentMonth + 1).padStart(2, "0")}-${String(dayNumber).padStart(2, "0")}`) {
+            const eventTitle = document.createElement("li");
+            eventTitle.textContent = event.title;
+            eventTitle.classList.add("event-item");
+            
+
+            list.appendChild(eventTitle);
+        }
+    });
     dayCard.classList.add("days");
     dayCard.textContent = dayNumber;
+    dayCard.appendChild(list);
     dayCard.addEventListener("click", () => {
         const selectedYear = document.querySelector("#year-selector").value;
         const selectedDate = new Date(selectedYear, currentMonth, dayNumber);
@@ -90,6 +108,7 @@ export function renderDay(dayNumber) {
         const day = String(selectedDate.getDate()).padStart(2, "0");
         
         const isoDate = `${year}-${month}-${day}`;
+        const title = prompt(`Event title for ${isoDate}:`);
         if (title) {
             const event = createEvent({
                 title,
@@ -97,6 +116,10 @@ export function renderDay(dayNumber) {
             });
             saveEvent(event);
             alert(`Event saved for ${isoDate}`);
+            const eventTitle = document.createElement("li");
+            eventTitle.textContent = event.title;
+            eventTitle.classList.add("event-item");
+            list.appendChild(eventTitle);
         }
         
         
