@@ -88,14 +88,30 @@ export function renderDay(dayNumber) {
     const events = getAllEvents();
     events.forEach(event => {
         if (event.date === `${document.querySelector("#year-selector").value}-${String(currentMonth + 1).padStart(2, "0")}-${String(dayNumber).padStart(2, "0")}`) {
-            const eventTitle = document.createElement("li");
-            eventTitle.textContent = event.title;
-            eventTitle.classList.add("event-item");
-            
-
-            list.appendChild(eventTitle);
+            renderEvents(event)
         }
+    }
+    );
+
+function renderEvents(event) {
+    const eventTitle = document.createElement("li");
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "x";
+    deleteBtn.classList.add("delete-event-btn");
+    deleteBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        deleteEvent(event.id);
     });
+    const eventTitleText = document.createElement("p");
+    eventTitleText.textContent = event.title;
+    eventTitle.appendChild(eventTitleText);
+    eventTitle.classList.add("event-item");
+    eventTitle.appendChild(deleteBtn);
+    list.appendChild(eventTitle);
+    return eventTitle;
+}
+
+        
     dayCard.classList.add("days");
     dayCard.textContent = dayNumber;
     dayCard.appendChild(list);
@@ -116,10 +132,8 @@ export function renderDay(dayNumber) {
             });
             saveEvent(event);
             alert(`Event saved for ${isoDate}`);
-            const eventTitle = document.createElement("li");
-            eventTitle.textContent = event.title;
-            eventTitle.classList.add("event-item");
-            list.appendChild(eventTitle);
+            renderCalendar(currentMonth, selectedYear);
+            renderEvents(event);
         }
         
         
