@@ -16,15 +16,21 @@ const currentYear = new Date().getFullYear();
 renderMonth(currentMonth)
 renderYear(currentYear)
 renderCalendar(currentMonth, currentYear);
+const holidays = downloadHolidays()
+console.log(holidays)
+
+console.log(getNthWeekdayOfMonth(2026, 4, 6, "second"));
 
 
 export function createEvent({ title, date }) {
-  return {
-    id: crypto.randomUUID(),
-    title: title.trim(),
-    date, // "YYYY-MM-DD"
-    allDay: true,
-    createdAt: new Date().toISOString()
+    return {
+        id: crypto.randomUUID(),
+        title: title.trim(),
+        date, // "YYYY-MM-DD"
+        allDay: true,
+        createdAt: new Date().toISOString(),
+        description: "",
+    
   };
 }
 
@@ -37,6 +43,44 @@ export function saveEvent(event) {
 export function getAllEvents() {
   return JSON.parse(localStorage.getItem("calendarEvents")) || [];
 }
+function getNthWeekdayOfMonth(year, monthIndex, weekdayIndex, occurrence) {
+    const firstDayIndex = new Date(year, monthIndex, 1).getDay();
+    const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+    const occurrenceMap = {
+        first: 0,
+        second: 1,
+        third: 2
+    };
+
+    let offset = weekdayIndex - firstDayIndex;
+    if (offset < 0) offset += 7;
+
+    if (occurrence !== "last") {
+        const weekOffset = occurrenceMap[occurrence] * 7;
+        return 1 + offset + weekOffset;
+    }
+
+    const lastDayIndex = new Date(year, monthIndex, daysInMonth).getDay();
+    let reverseOffset = lastDayIndex - weekdayIndex;
+    if (reverseOffset < 0) reverseOffset += 7;
+
+    return daysInMonth - reverseOffset;
+}
+
+async function downloadHolidays() {
+    try {
+        const response = await fetch("./days.json");
+        if (!response.ok) {
+            throw new Error("Failed to fetch holidays");
+        }
+        const holidays = await response.json();
+        return holidays;
+    } catch (error) {
+        console.error("Error fetching holidays:", error);
+        return [];
+    }
+}
+
 
 export function renderCalendar(month, year) {
     root.innerHTML = "";
@@ -128,7 +172,8 @@ function renderEvents(event) {
         if (title) {
             const event = createEvent({
                 title,
-                date: isoDate
+                date: isoDate,
+                description: "",
             });
             saveEvent(event);
             alert(`Event saved for ${isoDate}`);
@@ -173,7 +218,6 @@ export function renderYear(selectedYear) {
         const selectedYear = document.querySelector("#year-selector").value;
         if (currentMonth > 11) {
             currentMonth = 0;
-            selectedYear++;
         }
 
         renderCalendar(currentMonth, selectedYear);
@@ -186,7 +230,6 @@ previousMonth.addEventListener("click", () => {
 
     if (currentMonth < 0) {
         currentMonth = 11;
-        selectedYear--;
     }
 
     renderCalendar(currentMonth, selectedYear);
