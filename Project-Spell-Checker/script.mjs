@@ -7,10 +7,6 @@
 import { getDictionarySize, checkWordsInDictionary, addWordToDictionary } from "./common.mjs";
 
 export function initUI() {
-    const body = document.querySelector("body");
-    const paragraph = document.createElement("p");
-    paragraph.textContent = `There are ${getDictionarySize()} words in the Basic English dictionary`;
-    body.append(paragraph);
     const main = document.querySelector("main");
     window.onload = function () {
         const title = this.document.createElement("h1");
@@ -24,8 +20,6 @@ export function initUI() {
         section.append(label);
         const textarea = document.createElement("textarea");
         textarea.id = "text-input";
-        textarea.rows = 6;
-        textarea.cols = 50;
         textarea.placeholder = "Put you text here if you want to check it";
         section.append(textarea);
         const button = document.createElement("button");
@@ -46,7 +40,17 @@ export function initUI() {
         })
     };
 }
-
+function customDictionarySize() {
+    const main = document.querySelector("main");
+    if (main.querySelector("p")) {
+        const paragraph = main.querySelector("p");
+        paragraph.textContent = `There are ${getDictionarySize()} words in the Basic English dictionary`;
+    } else {
+        const paragraph = document.createElement("p");
+        paragraph.textContent = `There are ${getDictionarySize()} words in the Basic English dictionary`;
+        main.append(paragraph);
+    }
+}
 export function renderResult(checkedWords, container) {
     container.innerHTML = "";
 
@@ -61,6 +65,7 @@ export function renderResult(checkedWords, container) {
             addButton.textContent = "add to dictionary";
             addButton.addEventListener("click", () => {
                 addWordToDictionary(item.word);
+                customDictionarySize()
                 span.style.textDecoration = "none";
                 addButton.remove();
             })
