@@ -67,3 +67,19 @@ test('renderYear creates 101 options from 1950 to 2050', () => {
     expect(created[0].value).toBe(1950);
     expect(created[100].value).toBe(2050);
 });
+
+test('renderYear marks the selected year', () => {
+    const created = [];
+    document.createElement = () => {
+        const el = makeElement();
+        created.push(el);
+        return el;
+    };
+    document.querySelector = () => makeElement();
+
+    renderYear(2000);
+
+    // Find the option where selected is true - it should be year 2000
+    const selected = created.find(el => el.selected === true);
+    expect(selected.value).toBe(2000);
+});
