@@ -101,7 +101,6 @@ export function renderYear(selectedYear) {
         const selectedYear = document.querySelector("#year-selector").value;
         if (currentMonth > 11) {
             currentMonth = 0;
-            selectedYear++;
         }
 
         renderCalendar(currentMonth, selectedYear);
@@ -114,7 +113,6 @@ previousMonth.addEventListener("click", () => {
 
     if (currentMonth < 0) {
         currentMonth = 11;
-        selectedYear--;
     }
 
     renderCalendar(currentMonth, selectedYear);
