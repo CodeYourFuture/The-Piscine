@@ -16,6 +16,71 @@ const currentYear = new Date().getFullYear();
 renderMonth(currentMonth)
 renderYear(currentYear)
 renderCalendar(currentMonth, currentYear);
+const holidays = downloadHolidays()
+console.log(holidays)
+
+console.log(getNthWeekdayOfMonth(2026, 4, 6, "second"));
+
+
+export function createEvent({ title, date }) {
+    return {
+        id: crypto.randomUUID(),
+        title: title.trim(),
+        date, // "YYYY-MM-DD"
+        allDay: true,
+        createdAt: new Date().toISOString(),
+        description: "",
+    
+  };
+}
+
+export function saveEvent(event) {
+  const events = JSON.parse(localStorage.getItem("calendarEvents")) || [];
+  events.push(event);
+  localStorage.setItem("calendarEvents", JSON.stringify(events));
+}
+
+export function getAllEvents() {
+  return JSON.parse(localStorage.getItem("calendarEvents")) || [];
+}
+function getNthWeekdayOfMonth(year, monthIndex, weekdayIndex, occurrence) {
+    const firstDayIndex = new Date(year, monthIndex, 1).getDay();
+    const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
+    const occurrenceMap = {
+        first: 0,
+        second: 1,
+        third: 2
+    };
+
+    let offset = weekdayIndex - firstDayIndex;
+    if (offset < 0) offset += 7;
+
+    if (occurrence !== "last") {
+        const weekOffset = occurrenceMap[occurrence] * 7;
+        return 1 + offset + weekOffset;
+    }
+
+    const lastDayIndex = new Date(year, monthIndex, daysInMonth).getDay();
+    let reverseOffset = lastDayIndex - weekdayIndex;
+    if (reverseOffset < 0) reverseOffset += 7;
+
+    return daysInMonth - reverseOffset;
+}
+
+async function downloadHolidays() {
+    try {
+        const response = await fetch("./days.json");
+        if (!response.ok) {
+            throw new Error("Failed to fetch holidays");
+        }
+        const holidays = await response.json();
+        return holidays;
+    } catch (error) {
+        console.error("Error fetching holidays:", error);
+        return [];
+    }
+}
+
 
 export function renderCalendar(month, year) {
     root.innerHTML = "";
@@ -55,15 +120,67 @@ export function renderCalendar(month, year) {
 
     }
 }
-
+function deleteEvent(eventId) {
+    let events = getAllEvents();
+    events = events.filter(event => event.id !== eventId);
+    localStorage.setItem("calendarEvents", JSON.stringify(events));
+    renderCalendar(currentMonth, document.querySelector("#year-selector").value);
+}
 export function renderDay(dayNumber) {
-    const dayCard = document.createElement("button");
+    const dayCard = document.createElement("div");
+    const list = document.createElement("ul");
+    const events = getAllEvents();
+    events.forEach(event => {
+        if (event.date === `${document.querySelector("#year-selector").value}-${String(currentMonth + 1).padStart(2, "0")}-${String(dayNumber).padStart(2, "0")}`) {
+            renderEvents(event)
+        }
+    }
+    );
+
+function renderEvents(event) {
+    const eventTitle = document.createElement("li");
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "x";
+    deleteBtn.classList.add("delete-event-btn");
+    deleteBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        deleteEvent(event.id);
+    });
+    const eventTitleText = document.createElement("p");
+    eventTitleText.textContent = event.title;
+    eventTitle.appendChild(eventTitleText);
+    eventTitle.classList.add("event-item");
+    eventTitle.appendChild(deleteBtn);
+    list.appendChild(eventTitle);
+    return eventTitle;
+}
+
+        
     dayCard.classList.add("days");
     dayCard.textContent = dayNumber;
+    dayCard.appendChild(list);
     dayCard.addEventListener("click", () => {
         const selectedYear = document.querySelector("#year-selector").value;
         const selectedDate = new Date(selectedYear, currentMonth, dayNumber);
-        alert(`You selected: ${selectedDate.toDateString()}`);
+
+        const year = selectedDate.getFullYear();
+        const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
+        const day = String(selectedDate.getDate()).padStart(2, "0");
+        
+        const isoDate = `${year}-${month}-${day}`;
+        const title = prompt(`Event title for ${isoDate}:`);
+        if (title) {
+            const event = createEvent({
+                title,
+                date: isoDate,
+                description: "",
+            });
+            saveEvent(event);
+            alert(`Event saved for ${isoDate}`);
+            renderCalendar(currentMonth, selectedYear);
+            renderEvents(event);
+        }
+        
         
     })
     root.appendChild(dayCard);
